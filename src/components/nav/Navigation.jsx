@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 
 import {Link} from "react-router-dom"
+import logo from "../../assets/logo_upscayl_16x_realesrgan-x4plus-anime.png"
 
 const NavigationNoLog = () => {
     const [openNav, setOpenNav] = useState(false);
@@ -19,6 +20,7 @@ const NavigationNoLog = () => {
             () => window.innerWidth >= 960 && setOpenNav(false),
         );
     }, []);
+
 
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -59,23 +61,31 @@ const NavigationNoLog = () => {
         <div className="max-h-[768px] w-screen overflow-scroll">
             <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
                 <div className="flex items-center justify-between text-blue-gray-900">
-                    <Typography
-                        as="Link"
-                        to="#"
-                        className="mr-4 cursor-pointer py-1.5 font-medium"
-                    >
-                        AstroBlog
-                    </Typography>
+
+                    <Link to="/">
+                        <img
+                            src={logo}
+                            alt="logo"
+                            className="w-[100px]"
+                        />
+                    </Link>
+
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>
                         <div className="flex items-center gap-x-1">
-                            <Button
-                                variant="text"
-                                size="sm"
-                                className="hidden lg:inline-block"
-                            >
-                                <span>Accedi</span>
-                            </Button>
+
+                            <Link to="/login">
+
+                                <Button
+                                    variant="text"
+                                    size="sm"
+                                    className="hidden lg:inline-block"
+                                >
+                                    <span>Accedi</span>
+                                </Button>
+                            </Link>
+
+
                             <Button
                                 variant="gradient"
                                 size="sm"
@@ -126,12 +136,16 @@ const NavigationNoLog = () => {
                 <MobileNav open={openNav}>
                     {navList}
                     <div className="flex items-center gap-x-1">
-                        <Button fullWidth variant="text" size="sm" className="">
-                            <span>Accedi</span>
-                        </Button>
-                        <Button fullWidth variant="gradient" size="sm" className="">
-                            <span>Registrati</span>
-                        </Button>
+                        <Link to='/login'>
+                            <Button fullWidth variant="text" size="sm" className="">
+                                <span>Accedi</span>
+                            </Button>
+                        </Link>
+                        <Link to='/signup'>
+                            <Button fullWidth variant="gradient" size="sm" className="">
+                                <span>Registrati</span>
+                            </Button>
+                        </Link>
                     </div>
                 </MobileNav>
             </Navbar>

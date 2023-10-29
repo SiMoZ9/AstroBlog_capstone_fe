@@ -1,6 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import {useNavigate} from "react-router-dom";
 import useSession from "../hooks/useSession";
+import logo from "../assets/logo_upscayl_16x_realesrgan-x4plus-anime.png"
+
+import {
+    Card,
+    Input,
+    Button,
+    Typography,
+    Menu,
+    MenuHandler,
+    MenuItem,
+    MenuList
+} from "@material-tailwind/react";
+import NavigationNoLog from "../components/nav/Navigation";
+import NavigationLogin from "../components/nav/NavigationLogin";
 const Login = () => {
     const [loginData, setLoginData] = useState({})
     const [login, setLogin] = useState(null)
@@ -10,7 +24,7 @@ const Login = () => {
 
     useEffect(() => {
         if (session) {
-            navigate('/home')
+            navigate('/personalHome')
         }
     }, []);
     const handleInputChange = (e) => {
@@ -39,7 +53,7 @@ const Login = () => {
 
             if (data.token) {
                 localStorage.setItem('loggedInUser', JSON.stringify(data.token))
-                navigate("/home")
+                navigate("/personalHome")
             }
             setLogin(data)
         } catch (err) {
@@ -47,25 +61,61 @@ const Login = () => {
         }
     }
 
-    const handleGithubLogin = () => {
-        window.location.href = `${process.env.REACT_APP_ENDPOINT}/auth/github`
-    }
-
     return (
-        <div className="md:flex md:h-screen md:items-center md:justify-center mb-6">
-            <form onSubmit={handleSubmit}>
-                <div className="mb-6">
-                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                    <input onChange={handleInputChange} type="email" id="email" name="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
-                </div>
-                <div className="mb-6">
-                    <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                    <input onChange={handleInputChange} type="password" id="password"  name="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
-                </div>
-                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-            </form>
-        </div>
+        <main className="w-screen bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')] bg-gray-500 bg-blend-soft-light relative">
+            <NavigationLogin/>
+
+            <div className="absolute left-[50%] top-[25%] translate-x-[-50%] translate-y-[-50%]">
+                <img src={logo} alt="logo" className="w-[500px]"/>
+            </div>
+            <div className="min-h-screen max-h-screen flex flex-col items-center justify-center overflow-hidden">
+            <Card className="bg-blue-gray-900 items-center p-5 bg-opacity-80" shadow={false}>
+                <Typography variant="h4" color="white">
+                    Login
+                </Typography>
+                <Typography color="white" className="mt-1 font-normal">
+                    Salve! Entra subito e condividi l'universo con la community
+                </Typography>
+                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
+                    <div className="mb-1 flex flex-col gap-6">
+                        <Typography variant="h6" color="white" className="-mb-3">
+                            Email
+                        </Typography>
+                        <Input
+                            size="lg"
+                            name="email"
+                            onChange={handleInputChange}
+                            placeholder="name@mail.com"
+                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                            labelProps={{
+                                className: "before:content-none after:content-none",
+                            }}
+                        />
+                        <Typography variant="h6" color="white" className="-mb-3">
+                            Password
+                        </Typography>
+                        <Input
+                            type="password"
+                            name="password"
+                            size="lg"
+                            placeholder="********"
+                            onChange={handleInputChange}
+                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                            labelProps={{
+                                className: "before:content-none after:content-none",
+                            }}
+                        />
+                    </div>
+                    <Button className="mt-6" fullWidth type="submit">
+                        Entra
+                    </Button>
+                </form>
+            </Card>
+            </div>
+        </main>
     );
 };
 
 export default Login;
+
+
