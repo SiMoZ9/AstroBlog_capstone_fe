@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import useSession from "../hooks/useSession";
 import logo from "../assets/logo_upscayl_16x_realesrgan-x4plus-anime.png"
 
@@ -15,7 +15,8 @@ import {
 } from "@material-tailwind/react";
 import NavigationNoLog from "../components/nav/Navigation";
 import NavigationLogin from "../components/nav/NavigationLogin";
-const Login = () => {
+
+const Register = () => {
     const [loginData, setLoginData] = useState({})
     const [login, setLogin] = useState(null)
 
@@ -25,7 +26,7 @@ const Login = () => {
     useEffect(() => {
         if (session) {
             navigate('/personalHome')
-        } else navigate('/login')
+        } else navigate('/signup')
     }, []);
     const handleInputChange = (e) => {
         const {name, value} = e.target
@@ -41,7 +42,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const postData = await fetch(`http://localhost:5050/login`, {
+            const postData = await fetch(`http://localhost:5050/users/create`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -79,6 +80,20 @@ const Login = () => {
                 <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
                     <div className="mb-1 flex flex-col gap-6">
                         <Typography variant="h6" color="white" className="-mb-3">
+                            Username
+                        </Typography>
+                        <Input
+                            size="lg"
+                            name="username"
+                            onChange={handleInputChange}
+                            placeholder="name@mail.com"
+                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                            labelProps={{
+                                className: "before:content-none after:content-none",
+                            }}
+                        />
+
+                        <Typography variant="h6" color="white" className="-mb-3">
                             Email
                         </Typography>
                         <Input
@@ -91,6 +106,7 @@ const Login = () => {
                                 className: "before:content-none after:content-none",
                             }}
                         />
+ 
                         <Typography variant="h6" color="white" className="-mb-3">
                             Password
                         </Typography>
@@ -107,8 +123,14 @@ const Login = () => {
                         />
                     </div>
                     <Button className="mt-6" fullWidth type="submit">
-                        Entra
+                        Registrati
                     </Button>
+                    <Typography color="gray" className="mt-4 text-center font-normal">
+                        Hai gia un account?{" "}
+                    <Link to="/login" className="font-medium text-gray-900">
+                    Entra
+                    </Link>
+                    </Typography>
                 </form>
             </Card>
             </div>
@@ -116,6 +138,6 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
 
 

@@ -85,7 +85,7 @@ const NavigationNoLog = () => {
                                 </Button>
                             </Link>
 
-
+                            <Link to="/signup">
                             <Button
                                 variant="gradient"
                                 size="sm"
@@ -93,6 +93,7 @@ const NavigationNoLog = () => {
                             >
                                 <span>Registrati</span>
                             </Button>
+                            </Link>
                         </div>
                         <IconButton
                             variant="text"
