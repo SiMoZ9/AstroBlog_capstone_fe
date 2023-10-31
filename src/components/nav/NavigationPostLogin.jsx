@@ -73,15 +73,15 @@ const NavigationPostLogin = ({userName, userPic}) => {
                     <div className="flex items-center gap-4">
                         <div className="mr-4 hidden lg:block">{navList}</div>
                         <div className="flex items-center gap-x-1">
+                            <Link to="/publish">
                             <Button
                                 variant="gradient"
                                 size="sm"
                                 className="hidden lg:inline-block"
                             >
                                 <span className="flex items-center justify-center">Carica immagine <MdAddPhotoAlternate className="ml-1"/></span>
-
                             </Button>
-
+                            </Link>
                             <Button
                                 variant="gradient"
                                 size="sm"
@@ -151,9 +151,11 @@ const NavigationPostLogin = ({userName, userPic}) => {
                 <Collapse open={openNav}>
                     {navList}
                     <div className="flex items-center gap-x-1">
-                        <Button fullWidth variant="gradient" size="sm" className="">
-                            <span className="flex items-center justify-center">Carica immagine <MdAddPhotoAlternate className="ml-1"/></span>
-                        </Button>
+                        <Link to="/publish">
+                            <Button fullWidth variant="gradient" size="sm" className="">
+                                <span className="flex items-center justify-center">Carica immagine <MdAddPhotoAlternate className="ml-1"/></span>
+                            </Button>
+                        </Link>
                         <Button fullWidth variant="gradient" size="sm" className="">
                             <span>Il tuo account</span>
                         </Button>

@@ -8,12 +8,8 @@ import {
     Input,
     Button,
     Typography,
-    Menu,
-    MenuHandler,
-    MenuItem,
-    MenuList
 } from "@material-tailwind/react";
-import NavigationNoLog from "../components/nav/Navigation";
+
 import NavigationLogin from "../components/nav/NavigationLogin";
 
 const Register = () => {
@@ -63,13 +59,12 @@ const Register = () => {
     }
 
     return (
-        <main className="w-screen bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')] bg-gray-500 bg-blend-soft-light relative">
+        <main className="w-screen bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')] bg-gray-500 bg-blend-soft-light">
             <NavigationLogin/>
-
-            <div className="absolute left-[50%] top-[25%] translate-x-[-50%] translate-y-[-50%]">
-                <img src={logo} alt="logo" className="w-[500px]"/>
-            </div>
             <div className="min-h-screen max-h-screen flex flex-col items-center justify-center overflow-hidden">
+                <div className="">
+                    <img src={logo} alt="logo" className="w-[300px]"/>
+                </div>
             <Card className="bg-blue-gray-900 items-center p-5 bg-opacity-80" shadow={false}>
                 <Typography variant="h4" color="white">
                     Login
@@ -84,7 +79,7 @@ const Register = () => {
                         </Typography>
                         <Input
                             size="lg"
-                            name="username"
+                            name="userName"
                             onChange={handleInputChange}
                             placeholder="name@mail.com"
                             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
