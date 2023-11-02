@@ -18,7 +18,12 @@ const Home = () => {
     return (
         <>
             <NavigationBar/>
-            <Jumbotron/>
+            <Jumbotron
+                title={"Benvenuto in AstroBlog!"}
+                subtitle={"Esplora l'universo"}
+                buttonText={"Esplora"}
+                needButton={true}
+            />
         </>
     );
 };
