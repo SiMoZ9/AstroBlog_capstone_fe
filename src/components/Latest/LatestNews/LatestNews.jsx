@@ -36,8 +36,8 @@ const LatestNews = () => {
 
 
     return (
-        <div className="flex justify-center items-center">
-            <div className="w-[200px] h-[200px]">
+        <div className="flex justify-center items-center mt-4 h-full">
+            <div className="w-full h-full">
                 <NasaCarousel
                     pic1={apod1}
                     pic2={apod2}
