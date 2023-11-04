@@ -19,19 +19,17 @@ const LatestPost = () => {
 
     useEffect(() => {
         setLoading(true)
-        if (fetchData) {
-            setPosts(fetchData)
-            setLoading(false)
+        fetchData.then((res) => {
+            setPosts(res)
             console.log(posts)
-        } else {
-            setError("Error")
-        }
+        })
+        setLoading(false)
     }, []);
 
     return (
         <section>
             <div>{!loading && !error}</div>
-            <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 w-fit mx-auto">
+            <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 items-center justify-center gap-y-20 gap-x-14 m-5 p-5 rounded-[20px] bg-gray-200">
                 {error && <h1>Errore durante il caricamento dei post</h1>}
                 {loading && !error && (
                     <RingLoader
@@ -44,16 +42,7 @@ const LatestPost = () => {
 
                 {!loading &&
                     !error && (
-                        <>
-                            <PostCard />
-                            <PostCard />
-                            <PostCard />
-                            <PostCard />
-                            <PostCard />
-                            <PostCard />
-                            <PostCard />
-                            <PostCard />
-                        </>
+    <></>
                     )}
             </div>
         </section>

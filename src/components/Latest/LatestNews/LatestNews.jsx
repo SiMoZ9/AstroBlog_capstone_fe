@@ -1,50 +1,104 @@
 import NasaCarousel from "../../Carusel/Carousel";
 import React, {useEffect, useState} from "react";
-import {useFetch} from "../../../hooks/useFetch";
+import {RingLoader} from "react-spinners";
+import PostCard from "../PostCard/PostCard";
+import {Typography} from "@material-tailwind/react";
 const LatestNews = () => {
 
 
-    const API_KEY = "VUUqStlksMV8EHLZcKCyZ3T6aKksTzaEgvcuOQBk"
+    const API_KEY = "98c822f8-5530-4c14-aa09-053c2fb5ee9f"
 
-    const [apod1, setApod1] = useState("")
-    const [apod2, setApod2] = useState("")
-    const [apod3, setApod3] = useState("")
 
-    const pic1 = useFetch(`${process.env.REACT_APP_NASA_APOD}?api_key=${API_KEY}`, {})
-    const pic2 = useFetch(`${process.env.REACT_APP_NASA_APOD}?date=2023-11-01&api_key=${API_KEY}`, {})
-    const pic3 = useFetch(`${process.env.REACT_APP_NASA_APOD}?date=2023-10-31&api_key=${API_KEY}`, {})
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState("")
+    const [JWSTdata, setJWSTdata] = useState({})
+
+
+    const jwstFetch = async () => {
+        try {
+            setLoading(true)
+            const jwst = await fetch(`https://api.jwstapi.com/all/type/jpg?page=1&perPage=3`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        'X-API-KEY': `${API_KEY}`
+                    }
+                }
+            )
+            const data = await jwst.json()
+            if (data) {
+                setJWSTdata(data)
+                setLoading(false)
+            }
+            console.log(loading)
+        } catch (e) {
+            setError(e)
+        }
+    }
+
     useEffect(() => {
-        pic1.then((res) => {
-            console.log(res)
-            setApod1(res.hdurl)
-            console.log(apod1)
-        })
-
-        pic2.then((res) => {
-            console.log(res)
-            setApod2(res.hdurl)
-            console.log(apod2)
-        })
-
-        pic3.then((res) => {
-            console.log(res)
-            setApod3(res.hdurl)
-            console.log(apod3)
-        })
-
+        jwstFetch()
     }, []);
 
 
     return (
-        <div className="flex justify-center items-center mt-4 h-full">
-            <div className="w-full h-full">
-                <NasaCarousel
-                    pic1={apod1}
-                    pic2={apod2}
-                    pic3={apod3}
-                />
+        <>
+        <div className="flex flex-col justify-center items-center m-5 p-4 rounded-[20px] bg-gray-200">
+            <Typography variant="h3" className="p-4">
+                Ultimi dati dal JWST
+            </Typography>
+            <div className="w-[1280px] h-[720px]">
+                {error && <h1>Errore durante il caricamento dei post</h1>}
+                {loading && !error && (
+                    <div className="flex justify-center items-center h-full">
+                    <RingLoader
+                        size={300}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                    </div>
+                )}
+
+                {!loading && !error && (
+                    <>
+                        <NasaCarousel
+                            pic1={JWSTdata.body[0].location}
+                            pic2={JWSTdata.body[1].location}
+                            pic3={JWSTdata.body[2].location}
+                        />
+                    </>
+                    )}
             </div>
         </div>
+
+            <Typography variant="h3" className="text-center p-4">
+                News
+            </Typography>
+            <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 items-center justify-center gap-y-20 gap-x-14 m-5 p-5 rounded-[20px] bg-gray-200">
+                {error && <h1>Errore durante il caricamento dei post</h1>}
+                {loading && !error && (
+                    <div className="flex justify-center items-center h-full">
+                        <RingLoader
+                            size={300}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div>
+                )}
+
+                {!loading &&
+                    !error && (
+                        <>
+                            <PostCard />
+                            <PostCard />
+                            <PostCard />
+                            <PostCard />
+                            <PostCard />
+                            <PostCard />
+                            <PostCard />
+                        </>
+                    )}
+            </div>
+        </>
     )
 }
 

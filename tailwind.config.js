@@ -10,6 +10,9 @@ module.exports = withMT({
         'nebula-background-image': "url('../../../assets/jumbotron.png')"
       }
     },
+    fontFamily: {
+      sans: ["Montserrat", "sans-serif"],
+    },
   },
   plugins: [
     require('flowbite/plugin')
