@@ -3,10 +3,11 @@ import {useFetch} from "../../../hooks/useFetch";
 import PostCard from "../PostCard/PostCard";
 import {RingLoader} from "react-spinners";
 import {nanoid} from "nanoid";
+import login from "../../../views/Login";
 
 const LatestPost = () => {
 
-    const [posts, setPosts] = useState({})
+    const [post, setPosts] = useState({})
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
 
@@ -21,10 +22,14 @@ const LatestPost = () => {
         setLoading(true)
         fetchData.then((res) => {
             setPosts(res)
-            console.log(posts)
         })
+            .catch((err) => {
+                console.log(err)
+            })
         setLoading(false)
     }, []);
+
+    console.log(post.posts)
 
     return (
         <section>
@@ -41,9 +46,16 @@ const LatestPost = () => {
 
 
                 {!loading &&
-                    !error && (
-    <></>
-                    )}
+                    !error && post.posts && post.posts.map(post => (
+                        <>
+                            <PostCard
+                                key={nanoid()}
+                                title={post.title}
+                                cover={post.mainPic}
+                            />
+                        </>
+                    ))
+                    }
             </div>
         </section>
     )

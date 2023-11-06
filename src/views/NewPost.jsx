@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import PostForm from "../components/posts/PostForm";
 import NavigationPostLogin from "../components/nav/NavigationPostLogin";
+import useSession from "../hooks/useSession";
+import {useNavigate} from "react-router-dom";
 const NewPost = () => {
 
     const [postForm, setPostForm] = useState({})
@@ -8,6 +10,9 @@ const NewPost = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
     const [file, setFile] = useState(null)
+
+    const session = useSession()
+    const navigate = useNavigate()
 
     const onChangeSetFile = (e) => {
         setFile(e.target.files[0])
@@ -18,7 +23,7 @@ const NewPost = () => {
         fileData.append('mainPic', cover)
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_ENDPOINT_URL}/blogPosts/upload`, {
+            const response = await fetch(`${process.env.REACT_APP_ENDPOINT}/skyPost/cloudUpload`, {
                 method: "POST",
                 body: fileData
             })
@@ -59,6 +64,7 @@ const NewPost = () => {
     }
 
     useEffect(() => {
+        if (!session) navigate('/')
         objFetch()
     }, []);
 
@@ -67,38 +73,55 @@ const NewPost = () => {
 
         setPostForm({
             ...postForm,
-            [name]: value
+            [name]: value,
         })
 
         console.log(postForm)
     }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (file) {
             console.log(file)
             try {
+                console.log(postForm)
                 const uploadCover = await uploadFile(file)
                 const finalBody = {
-                    ...formData,
-                    cover: uploadCover.cover
+                    object: postForm.object,
+                    title: postForm.title,
+                    mainPic: uploadCover.cover,
+                    description: {
+                        instrumentation: {
+                            telescope: postForm.telescope,
+                            camera: postForm.camera
+                        },
+
+                        place: {
+                            coordinates: {
+                                latitude: postForm.latitude,
+                                longitude: postForm.longitude
+                            },
+                        },
+                    },
                 }
 
+                console.log(finalBody)
+
                 setLoading(true)
-                await fetch(`${process.env.REACT_APP_ENDPOINT_URL}/blogPosts`, {
+                await fetch(`${process.env.REACT_APP_ENDPOINT}/skyPost/post/${JSON.parse(localStorage.getItem('loggedInUser'))}`, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
+                        "Authorization": JSON.parse(localStorage.getItem('loggedInUser'))
                     },
                     body: JSON.stringify(finalBody),
                 })
                 setLoading(false)
-
             } catch(e) {
                 console.log(error)
             }
         } else {
+            alert('Carica un file')
             console.error('Carica un file!')
         }
 

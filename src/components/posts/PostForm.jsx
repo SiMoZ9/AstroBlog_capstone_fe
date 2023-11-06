@@ -45,7 +45,8 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
                     <Typography variant="h6" color="blue-gray" className="-mb-3">
                         Carica un file
                     </Typography>
-                        <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"/>
+                        <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"
+                                onChange={onChangeSetFile}/>
                     <Typography variant="h6" color="blue-gray" className="-mb-3">
                         Titolo
                     </Typography>
@@ -106,6 +107,7 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
                     <Textarea
                         size="lg"
                         placeholder="NGC 6960 è una nebulosa..."
+                        name="description"
                         className="!border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
@@ -119,7 +121,7 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
                     <Input
                         size="lg"
                         placeholder="NGC6960"
-                        name="object"
+                        name="telescope"
                         className="!border-t-blue-gray-200 focus:!border-t-gray-900"
                         labelProps={{
                             className: "before:content-none after:content-none",
