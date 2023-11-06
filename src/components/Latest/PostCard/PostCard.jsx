@@ -7,12 +7,14 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
+import {Link} from "react-router-dom";
 
 function PostCard(
     {
         title,
         author,
         cover,
+        id,
         description
     }
 ) {
@@ -33,7 +35,9 @@ function PostCard(
                 </Typography>
             </CardBody>
             <CardFooter className="pt-0">
-                <Button>Read More</Button>
+                <Link to={`/skyPosts/${id}`}>
+                <Button>Vai al post</Button>
+                </Link>
             </CardFooter>
         </Card>
     );

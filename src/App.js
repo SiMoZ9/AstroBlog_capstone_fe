@@ -5,6 +5,7 @@ import ProtectedRoutes from "./middlewares/ProtectedRoutes";
 import Home from "./views/Home";
 import PersonalHome from "./views/personalHome";
 import NewPost from "./views/NewPost";
+import PostDetail from "./views/PostDetail";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route element={<ProtectedRoutes />} />
                 <Route path='/personalHome' element={<PersonalHome/>} />
                 <Route path='/publish' element={<NewPost/>} />
+                <Route path='/skyPosts/:id' element={<PostDetail />} />
             <Route/>
 
         </Routes>

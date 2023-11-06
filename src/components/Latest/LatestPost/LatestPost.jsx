@@ -52,6 +52,7 @@ const LatestPost = () => {
                                 key={nanoid()}
                                 title={post.title}
                                 cover={post.mainPic}
+                                id={post._id}
                             />
                         </>
                     ))
