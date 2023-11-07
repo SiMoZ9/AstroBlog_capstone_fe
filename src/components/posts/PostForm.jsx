@@ -17,6 +17,8 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
         'Color Camera'
     ]
 
+
+
     const catalogs = [
         'NGC',
         'LBN',
@@ -276,8 +278,23 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
                     </Menu>
 
                     <Typography variant="h6" color="blue-gray" className="-mb-3">
+                        Costellazione
+                    </Typography>
+                    <Input
+                        size="lg"
+                        name="constellation"
+                        className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                        labelProps={{
+                            className: "before:content-none after:content-none",
+                        }}
+                        onChange={change}
+                    />
+
+                    <Typography variant="h6" color="blue-gray" className="-mb-3">
                         Posizione di scatto
                     </Typography>
+
+
 
                     <div className="flex justify-center items-center">
                         <Typography variant="h6" color="blue-gray" className="p-4">
@@ -307,17 +324,58 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
                             }}
                             onChange={change}
                         />
-
                     </div>
-
                 </div>
+
+                <div className="flex justify-center items-center">
+                    <Typography variant="h6" color="blue-gray" className="p-4">
+                        Ra
+                    </Typography>
+                    <Input
+                        size="lg"
+                        placeholder="Seleziona Sii"
+                        name="ra"
+                        className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+                        labelProps={{
+                            className: "before:content-none after:content-none",
+                        }}
+                        onChange={change}
+                    />
+
+                    <Typography variant="h6" color="blue-gray" className="p-4">
+                        Dec
+                    </Typography>
+                    <Input
+                        size="lg"
+                        placeholder="Seleziona Sii"
+                        name="dec"
+                        className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+                        labelProps={{
+                            className: "before:content-none after:content-none",
+                        }}
+                        onChange={change}
+                    />
+                </div>
+
+                <Typography variant="h6" color="blue-gray" className="p-4">
+                    Data
+                </Typography>
+                <Input
+                    size="lg"
+                    placeholder="YYYY-MM-DD"
+                    name="date"
+                    className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+                    labelProps={{
+                        className: "before:content-none after:content-none",
+                    }}
+                    onChange={change}
+                />
 
                 <div className="flex justify-center mt-5">
                     <Button type="submit">
                         Inserisci post
                     </Button>
                 </div>
-
 
             </form>
         </div>

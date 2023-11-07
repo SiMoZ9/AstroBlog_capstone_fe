@@ -93,14 +93,32 @@ const NewPost = () => {
                     description: {
                         instrumentation: {
                             telescope: postForm.telescope,
-                            camera: postForm.camera
+                            camera: postForm.camera,
+                            filters: {
+                                narrowband: {
+                                    ha: postForm.ha,
+                                    oiii: postForm.oiii,
+                                    sii: postForm.sii
+                                },
+
+                                broadband: {
+                                    l: postForm.l,
+                                    r: postForm.r,
+                                    g: postForm.g,
+                                    b: postForm.b
+                                }
+                            }
                         },
 
                         place: {
                             coordinates: {
                                 latitude: postForm.latitude,
-                                longitude: postForm.longitude
+                                longitude: postForm.longitude,
+                                ra: postForm.ra,
+                                dec: postForm.dec,
+                                date: postForm.date
                             },
+                            constellation: postForm.constellation.toLowerCase().slice(0, 2)
                         },
                     },
                 }

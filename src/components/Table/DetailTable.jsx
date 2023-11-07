@@ -1,40 +1,134 @@
 import { Card, Typography } from "@material-tailwind/react";
+import {nanoid} from "nanoid";
 
-const TABLE_ROWS = [
+const DetailTable = (
+    {
+        telescope,
+        camera,
+        filters,
+        lat,
+        long,
+        date,
+        constellation,
+        ra,
+        dec,
+    }) => {
 
-];
+    const TABLE_ROWS = [
+        {
+            telescope: telescope,
+            camera: camera,
+            filters: filters,
+            lat: lat,
+            long: long,
+            date: date,
+            constellation: constellation
+        }
+    ];
 
-export function TableWithStripedRows() {
     return (
-        <Card className="h-full w-full overflow-scroll">
-            <table className="w-full min-w-max table-auto text-left">
+        <div>
+        <Card className="w-[56rem] h-max overflow-scroll">
+            <Typography variant="h3" className="text-center m-4">
+                Instrumentation
+            </Typography>
+            <table className="w-full min-w-max table-auto text-center">
                 <tbody>
+                {TABLE_ROWS.map(({ telescope }, index) => (
+                    <tr key={nanoid()} className="even:bg-blue-gray-50/50">
+                        <th>
+                            <Typography variant="h6">
+                                Telescope
+                            </Typography>
+                        </th>
+                        <td className="p-4">
+                            <Typography variant="small" color="blue-gray" className="font-normal">
+                                {telescope}
+                            </Typography>
+                        </td>
+                    </tr>
+                ))}
+
                 {TABLE_ROWS.map(({ telescope, camera, filters }, index) => (
-                    <tr key={name} className="even:bg-blue-gray-50/50">
+                    <tr key={nanoid()} className="even:bg-blue-gray-50/50">
+                        <th>
+                            <Typography variant="h6">
+                                Camera
+                            </Typography>
+                        </th>
                         <td className="p-4">
                             <Typography variant="small" color="blue-gray" className="font-normal">
-                                {name}
+                                {camera}
                             </Typography>
                         </td>
-                        <td className="p-4">
-                            <Typography variant="small" color="blue-gray" className="font-normal">
-                                {job}
+                    </tr>
+                ))}
+
+                {TABLE_ROWS.map(({filters}) => (
+                    <tr key={nanoid()} className="even:bg-blue-gray-50/50">
+                        <th>
+                            <Typography variant="h6">
+                                Filters
                             </Typography>
-                        </td>
+                        </th>
                         <td className="p-4">
-                            <Typography variant="small" color="blue-gray" className="font-normal">
-                                {date}
-                            </Typography>
-                        </td>
-                        <td className="p-4">
-                            <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
-                                Edit
-                            </Typography>
+                                <Typography variant="small" color="blue-gray" className="font-normal">
+                                    {filters.narrowband.ha} {'\n'}
+                                    {filters.narrowband.oiii} {'\n'}
+                                    {filters.narrowband.sii}
+                                </Typography>
                         </td>
                     </tr>
                 ))}
                 </tbody>
             </table>
         </Card>
+            <Card className="w-[56rem] h-48 overflow-scroll mt-12">
+                <Typography variant="h3" className="text-center">
+                    Description
+                </Typography>
+                <table className="w-full min-w-max table-auto text-center">
+                    <tbody>
+                    {TABLE_ROWS.map(({ lat, long }, index) => (
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50">
+                            <th>
+                                <Typography variant="h6">
+                                    Coordinates
+                                </Typography>
+                            </th>
+                            <td className="p-4">
+                                <Typography variant="small" color="blue-gray" className="font-normal">
+                                    Lat-Long: {lat} {";"} {long}
+                                </Typography>
+                                <Typography variant="small" color="blue-gray" className="font-normal">
+                                    Ra-Dec: {ra} {";"} {dec}
+                                </Typography>
+                            </td>
+                        </tr>
+                    ))}
+
+                    {TABLE_ROWS.map(({ date }, index) => (
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50">
+                            <th>
+                                <Typography variant="h6">
+                                    Date
+                                </Typography>
+                            </th>
+                            <td className="p-4">
+                                <Typography variant="small" color="blue-gray" className="font-normal">
+                                    {date}
+                                </Typography>
+                            </td>
+                        </tr>
+                    ))}
+
+                    </tbody>
+                </table>
+            </Card>
+
+        </div>
+
     );
 }
+
+export default DetailTable
