@@ -59,77 +59,104 @@ const Register = () => {
     }
 
     return (
-        <main className="w-screen bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')] bg-gray-500 bg-blend-soft-light">
-            <NavigationLogin/>
-            <div className="min-h-screen max-h-screen flex flex-col items-center justify-center overflow-hidden">
-                <div className="">
-                    <img src={logo} alt="logo" className="w-[300px]"/>
+        <>
+            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')]">
+                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                    <img
+                        className="mx-auto w-[300px]"
+                        src={logo}
+                        alt="Your Company"
+                    />
+                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                        Sign in to your account
+                    </h2>
                 </div>
-            <Card className="bg-blue-gray-900 items-center p-5 bg-opacity-80" shadow={false}>
-                <Typography variant="h4" color="white">
-                    Login
-                </Typography>
-                <Typography color="white" className="mt-1 font-normal">
-                    Salve! Entra subito e condividi l'universo con la community
-                </Typography>
-                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
-                    <div className="mb-1 flex flex-col gap-6">
-                        <Typography variant="h6" color="white" className="-mb-3">
-                            Username
-                        </Typography>
-                        <Input
-                            size="lg"
-                            name="userName"
-                            onChange={handleInputChange}
-                            placeholder="name@mail.com"
-                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                            labelProps={{
-                                className: "before:content-none after:content-none",
-                            }}
-                        />
 
-                        <Typography variant="h6" color="white" className="-mb-3">
-                            Email
-                        </Typography>
-                        <Input
-                            size="lg"
-                            name="email"
-                            onChange={handleInputChange}
-                            placeholder="name@mail.com"
-                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                            labelProps={{
-                                className: "before:content-none after:content-none",
-                            }}
-                        />
- 
-                        <Typography variant="h6" color="white" className="-mb-3">
-                            Password
-                        </Typography>
-                        <Input
-                            type="password"
-                            name="password"
-                            size="lg"
-                            placeholder="********"
-                            onChange={handleInputChange}
-                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                            labelProps={{
-                                className: "before:content-none after:content-none",
-                            }}
-                        />
-                    </div>
-                    <Button className="mt-6" fullWidth type="submit">
-                        Registrati
-                    </Button>
-                    <Typography color="gray" className="mt-4 text-center font-normal">
-                        Hai gia un account?{" "}
-                    <Link to="/login" className="font-medium text-gray-900">
-                    Entra
-                    </Link>
-                    </Typography>
-                </form>
-            </Card>
+                <div className="mt-10 h-[50vh] sm:mx-auto sm:w-full sm:max-w-sm">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                                Email address
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    autoComplete="email"
+                                    onChange={handleInputChange}
+                                    required
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                                Username
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="username"
+                                    name="userName"
+                                    type="text"
+                                    onChange={handleInputChange}
+                                    required
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                                Password
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    onChange={handleInputChange}
+                                    required
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                                Verify password
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="verify_password"
+                                    name="verify_password"
+                                    type="password"
+                                    required
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <button
+                                type="submit"
+                                className="flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800"
+                            >
+                                Sign up
+                            </button>
+                        </div>
+                    </form>
+
+                    <p className="mt-10 text-center text-sm text-white">
+                        Registered?{' '}
+                        <Link to="/login" className="font-semibold leading-6 text-gray-900 hover:text-gray-800">
+                            Login now!
+                        </Link>
+                    </p>
+                </div>
             </div>
-        </main>
+        </>
     );
 };
 

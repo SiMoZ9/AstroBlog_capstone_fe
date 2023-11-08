@@ -63,7 +63,7 @@ const Login = () => {
     }
 
     return (
-        <main className="w-screen bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')] bg-gray-500 bg-blend-soft-light">
+        <main className="w-screen bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')]">
             <LoginForm
                 handleSubmit={handleSubmit}
                 handleInputChange={handleInputChange}

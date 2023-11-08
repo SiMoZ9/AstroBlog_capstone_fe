@@ -9,23 +9,23 @@ const UserContext = ({children}) => {
     const [error, setError] = useState("")
     const [user, setUser] = useState({})
 
-/*    const userFetch = useFetch(`${process.env.REACT_APP_ENDPOINT}/users/${JSON.parse(localStorage.getItem('loggedInUser'))}`, {
+    const userFetch = useFetch(`${process.env.REACT_APP_ENDPOINT}/users/me/${JSON.parse(localStorage.getItem('loggedInUser'))}`, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `${JSON.parse(localStorage.getItem('loggedInUser'))}`
         }
-    })*/
+    })
 
     useEffect(() => {
 
-/*        setLoading(true)
+        setLoading(true)
         userFetch.then((res) => {
             console.log(res)
             setUser(res)
             setLoading(false)
         }).catch(err => {
             setError(err)
-        })*/
+        })
 
     }, []);
 
