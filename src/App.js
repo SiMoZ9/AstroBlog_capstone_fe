@@ -7,6 +7,9 @@ import PersonalHome from "./views/personalHome";
 import NewPost from "./views/NewPost";
 import PostDetail from "./views/PostDetail";
 import DetailsContext from "./context/DetailsContext";
+import UserContext from "./context/UserContext";
+import Me from "./views/Me";
+import VerticalNav from "./components/nav/VerticalUserNav";
 
 function App() {
   return (
@@ -21,6 +24,10 @@ function App() {
                 <Route path='/publish' element={<NewPost/>} />
                 <Route element={<DetailsContext />}>
                     <Route path='/skyPosts/:id' element={<PostDetail />} />
+                </Route>
+
+                <Route element={<UserContext />}>
+                    <Route path='/account' element={<Me/>}/>
                 </Route>
             <Route/>
 

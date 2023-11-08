@@ -17,7 +17,7 @@ const LatestNews = () => {
     const jwstFetch = async () => {
         try {
             setLoading(true)
-            const jwst = await fetch(`https://api.jwstapi.com/all/type/jpg?page=1&perPage=3`, {
+            const jwst = await fetch(`https://api.jwstapi.com/all/type/jpg`, {
                     headers: {
                         "Content-Type": "application/json",
                         'X-API-KEY': `${API_KEY}`
@@ -73,7 +73,7 @@ const LatestNews = () => {
             <Typography variant="h3" className="text-center p-4">
                 News
             </Typography>
-            <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 items-center justify-center gap-y-20 gap-x-14 m-5 p-5 rounded-[20px] bg-gray-200">
+            <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 w-fit mx-auto">
                 {error && <h1>Errore durante il caricamento dei post</h1>}
                 {loading && !error && (
                     <div className="flex justify-center items-center h-full">
