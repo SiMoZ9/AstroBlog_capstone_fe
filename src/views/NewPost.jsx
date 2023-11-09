@@ -118,7 +118,7 @@ const NewPost = () => {
                                 dec: postForm.dec,
                                 date: postForm.date
                             },
-                            constellation: postForm.constellation.toLowerCase().slice(0, 2)
+                            constellation: postForm.constellation.toLowerCase().slice(0, 3)
                         },
                     },
                 }

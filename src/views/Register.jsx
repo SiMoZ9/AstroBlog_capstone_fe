@@ -67,26 +67,26 @@ const Register = () => {
                         src={logo}
                         alt="Your Company"
                     />
-                    <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Sign in to your account
-                    </h2>
+                    <Typography variant="h1" className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
+                        Create your account
+                    </Typography>
                 </div>
 
-                <div className="mt-10 h-[50vh] sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="mt-10 h-[50vh] sm:mx-auto sm:w-full sm:max-w-sm rounded-[10px]">
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 Email address
                             </label>
                             <div className="mt-2">
-                                <input
+                                <Input
                                     id="email"
                                     name="email"
                                     type="email"
                                     autoComplete="email"
                                     onChange={handleInputChange}
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+
+                                    className="block bg-white w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -96,13 +96,13 @@ const Register = () => {
                                 Username
                             </label>
                             <div className="mt-2">
-                                <input
+                                <Input
                                     id="username"
                                     name="userName"
                                     type="text"
                                     onChange={handleInputChange}
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                    
+                                    className="block bg-white w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -112,13 +112,13 @@ const Register = () => {
                                 Password
                             </label>
                             <div className="mt-2">
-                                <input
+                                <Input
                                     id="password"
                                     name="password"
                                     type="password"
                                     onChange={handleInputChange}
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                    
+                                    className="block bg-white w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -128,12 +128,12 @@ const Register = () => {
                                 Verify password
                             </label>
                             <div className="mt-2">
-                                <input
+                                <Input
                                     id="verify_password"
                                     name="verify_password"
                                     type="password"
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                    
+                                    className="block bg-white  w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -146,14 +146,16 @@ const Register = () => {
                                 Sign up
                             </button>
                         </div>
-                    </form>
 
-                    <p className="mt-10 text-center text-sm text-white">
-                        Registered?{' '}
-                        <Link to="/login" className="font-semibold leading-6 text-gray-900 hover:text-gray-800">
-                            Login now!
-                        </Link>
-                    </p>
+
+                        <p className="mt-10 text-center text-sm text-white">
+                            Registered?{' '}
+                            <Link to="/login" className="font-semibold leading-6 text-gray-900 hover:text-gray-800">
+                                Login now!
+                            </Link>
+                        </p>
+
+                    </form>
                 </div>
             </div>
         </>

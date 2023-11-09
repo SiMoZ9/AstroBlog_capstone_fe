@@ -27,14 +27,14 @@ export const LoginForm = ({handleSubmit, handleInputChange, field1, field2}) => 
                                 Email address
                             </label>
                             <div className="mt-2">
-                                <input
+                                <Input
                                     id="email"
                                     name="email"
                                     type="email"
                                     autoComplete="email"
                                     onChange={handleInputChange}
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                    className="block bg-white w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -44,13 +44,13 @@ export const LoginForm = ({handleSubmit, handleInputChange, field1, field2}) => 
                                 Password
                             </label>
                             <div className="mt-2">
-                                <input
+                                <Input
                                     id="password"
                                     name="password"
                                     type="password"
                                     onChange={handleInputChange}
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
+                                    className="block bg-white w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
