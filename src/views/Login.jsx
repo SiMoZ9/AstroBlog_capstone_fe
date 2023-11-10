@@ -42,7 +42,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const postData = await fetch(`http://localhost:5050/login`, {
+            const postData = await fetch(`${process.env.REACT_APP_ENDPOINT}/login`, {
                 headers: {
                     "Content-Type": "application/json"
                 },

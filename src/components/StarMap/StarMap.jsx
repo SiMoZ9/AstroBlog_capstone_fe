@@ -13,6 +13,9 @@ const StarMap = ({type}) => {
     const authString = btoa(`${process.env.REACT_APP_ASTRO_APP_ID}:${process.env.REACT_APP_ASTRO_APP_SECRET}`);
 
     const body = {
+
+        "style": "navy",
+
         "observer": {
             "latitude": details.description.place.coordinates.latitude,
             "longitude": details.description.place.coordinates.longitude,
@@ -37,9 +40,9 @@ const StarMap = ({type}) => {
     const starFetch = useFetch(`${process.env.REACT_APP_ASTRONOMY_API}/studio/star-chart`, {
         method: "POST",
         headers: {
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
             "Authorization": `Basic ${authString}`,
-            "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify(body),
     })

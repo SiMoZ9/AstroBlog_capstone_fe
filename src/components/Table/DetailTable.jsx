@@ -1,5 +1,6 @@
 import { Card, Typography } from "@material-tailwind/react";
 import {nanoid} from "nanoid";
+import login from "../../views/Login";
 
 const DetailTable = (
     {
@@ -72,11 +73,22 @@ const DetailTable = (
                             </Typography>
                         </th>
                         <td className="p-4">
+                            {filters.narrowband &&
+                                    <Typography variant="small" color="blue-gray" className="font-normal">
+                                        {filters.narrowband.ha} {'\n'}
+                                        {filters.narrowband.oiii} {'\n'}
+                                        {filters.narrowband.sii}
+                                    </Typography>
+                            }
+
+                            {filters.broadband &&
                                 <Typography variant="small" color="blue-gray" className="font-normal">
-                                    {filters.narrowband.ha} {'\n'}
-                                    {filters.narrowband.oiii} {'\n'}
-                                    {filters.narrowband.sii}
+                                    {filters.broadband.l} {'\n'}
+                                    {filters.broadband.r} {'\n'}
+                                    {filters.broadband.g} {'\n'}
+                                    {filters.broadband.b}
                                 </Typography>
+                            }
                         </td>
                     </tr>
                 ))}

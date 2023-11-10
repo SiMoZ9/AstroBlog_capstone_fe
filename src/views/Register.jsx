@@ -38,7 +38,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const postData = await fetch(`http://localhost:5050/users/create`, {
+            const postData = await fetch(`${process.env.REACT_APP_ENDPOINT}/users/create`, {
                 headers: {
                     "Content-Type": "application/json"
                 },

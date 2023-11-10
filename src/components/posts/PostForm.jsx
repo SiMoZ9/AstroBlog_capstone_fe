@@ -17,8 +17,6 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
         'Color Camera'
     ]
 
-
-
     const catalogs = [
         'NGC',
         'LBN',
@@ -48,7 +46,9 @@ const PostForm = ({change, submit, onChangeSetFile}) => {
                         Carica un file
                     </Typography>
                         <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"
-                                onChange={onChangeSetFile}/>
+                                onChange={onChangeSetFile}
+                               name={"mainPic"}
+                        />
                     <Typography variant="h6" color="blue-gray" className="-mb-3">
                         Titolo
                     </Typography>

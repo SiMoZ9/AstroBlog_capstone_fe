@@ -9,6 +9,8 @@ const DetailsContext = ({children}) => {
     const [error, setError] = useState("")
     const [details, setDetails] = useState({})
 
+    const [myPosts, setMyPosts] = useState({})
+
     const [typeOfView, setTypeOfView] = useState("")
     const [star, setStar] = useState({})
 
@@ -23,6 +25,13 @@ const DetailsContext = ({children}) => {
         }
     })
 
+    const fetchMyPosts = useFetch(`${process.env.REACT_APP_ENDPOINT}/skyPost/account/posts/${JSON.parse(localStorage.getItem('loggedInUser'))}`, {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": JSON.parse(localStorage.getItem('loggedInUser'))
+        }
+    })
+
     useEffect(() => {
         setLoading(true)
         fetchData.then((res) => {
@@ -31,6 +40,13 @@ const DetailsContext = ({children}) => {
             setLoading(false)
         })
             .catch((err) => setError(err))
+
+
+        setLoading(true)
+        fetchMyPosts.then((res) => {
+            setMyPosts(res)
+
+        })
     }, [])
 
 

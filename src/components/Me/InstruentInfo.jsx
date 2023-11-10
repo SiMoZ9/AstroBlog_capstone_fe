@@ -5,6 +5,7 @@ import {Button, Input, Typography} from "@material-tailwind/react";
 import {PiInstagramLogo, PiMetaLogo} from "react-icons/pi";
 import {Link, useNavigate} from "react-router-dom";
 import {RiTwitterXLine} from "react-icons/ri";
+import MultipleInputs from "../MultipleInputs/MultipleInputs";
 
 const InstrumentInfo = () => {
 
@@ -49,7 +50,8 @@ const InstrumentInfo = () => {
 
         setFormData({
             ...formData,
-            [`${name}`]: value
+            [`${name}`]: value,
+            [telescopes]: value
         }
         )
 
@@ -71,127 +73,14 @@ const InstrumentInfo = () => {
                                     <div className="flex justify-center px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
                                         <div className="w-screen flex flex-col justify-center rounded-[20px] p-4 bg-gray-100">
                                             <Typography variant="h5">Instrumentation info</Typography>
-
                                             <form className="mt-6" onSubmit={handleSubmit}>
                                                 <div className="grid gap-6 mb-6 md:grid-cols-2">
-                                                    <div>
-                                                        <Typography className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telescopes</Typography>
-                                                        {
-                                                            telescopes.map((filterElement, index) => (
-                                                                <div className="flex mb-4" id={index}>
-
-                                                                    <Input type="text"
-                                                                           name={`telescope${index}`}
-                                                                           id={index}
-                                                                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                           onChange={(e) => handleInputChange(e, index)}/>
-
-                                                                    <Button className="ml-4 bg-gray-900" onClick={handleInputTelescopes}>
-                                                                        +
-                                                                    </Button>
-                                                                    {console.log(telescopes)}
-                                                                </div>
-                                                            ))
-                                                        }
-                                                    </div>
-                                                    <div>
-                                                        <Typography className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cameras</Typography>
-                                                        {
-                                                            cameras.map((filterElement, index) => (
-                                                                <div className="flex mb-4" id={index}>
-
-                                                                    <Input type="text"
-                                                                           name="cameras"
-                                                                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                           onChange={(e) => handleInputChange(e, index)}/>
-
-                                                                    <Button className="ml-4 bg-gray-900" onClick={handleInputCameras}>
-                                                                        +
-                                                                    </Button>
-                                                                </div>
-                                                            ))
-                                                        }
-                                                    </div>
-
-                                                    <div>
-                                                        <Typography className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Narrowband filters</Typography>
-                                                        {
-                                                            NarrowBandFilters.map((filterElement, index) => (
-                                                                <div className="flex mb-4" id={index}>
-
-                                                                    <Input type="text"
-                                                                           name="narrowband"
-                                                                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                           onChange={(e) => handleInputChange(e, index)}/>
-
-                                                                    <Button className="ml-4 bg-gray-900" onClick={handleInputAddNarrow}>
-                                                                        +
-                                                                    </Button>
-                                                                </div>
-                                                            ))
-                                                        }
-                                                    </div>
-                                                    <div>
-                                                        <Typography className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Broadband filters</Typography>
-                                                        {
-                                                            BroadBandFilters.map((filterElement, index) => (
-                                                                <div className="flex mb-4" id={index}>
-
-                                                                    <Input type="text"
-                                                                           name="broadband"
-                                                                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                           onChange={(e) => handleInputChange(e, index)}/>
-
-                                                                    <Button className="ml-4 bg-gray-900" onClick={handleInputAddBroad}>
-                                                                        +
-                                                                    </Button>
-                                                                </div>
-                                                            ))
-                                                        }
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <Typography className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mounts</Typography>
-                                                            {
-                                                                mounts.map((filterElement, index) => (
-                                                                    <div className="flex mb-4" id={index}>
-
-                                                                        <Input type="text"
-                                                                               name="mounts"
-                                                                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                               onChange={(e) => handleInputChange(e, index)}/>
-
-                                                                        <Button className="ml-4 bg-gray-900" onClick={handleInputMounts}>
-                                                                            +
-                                                                        </Button>
-                                                                    </div>
-                                                                ))
-                                                            }
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div>
-                                                        <div>
-                                                            <Typography className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Guides Camera</Typography>
-                                                            {
-                                                                guide.map((filterElement, index) => (
-                                                                    <div className="flex mb-4" id={index}>
-
-                                                                        <Input type="text"
-                                                                               name="guide"
-                                                                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                               onChange={(e) => handleInputChange(e, index)}/>
-
-                                                                        <Button className="ml-4 bg-gray-900" onClick={handleInputGuide}>
-                                                                            +
-                                                                        </Button>
-                                                                    </div>
-                                                                ))
-                                                            }
-                                                        </div>
-                                                    </div>
-
+                                                    <MultipleInputs name={"telescopes"} section={"Telescopes"} mappedObj={telescopes} onChangeHandler={handleInputChange} onClinkHandler={handleInputTelescopes}/>
+                                                    <MultipleInputs name={"cameras"} section={"Cameras"} mappedObj={cameras} onChangeHandler={handleInputChange} onClinkHandler={handleInputCameras}/>
+                                                    <MultipleInputs name={"narrowband"} section={"Narrowband filters"} mappedObj={NarrowBandFilters} onChangeHandler={handleInputChange} onClinkHandler={handleInputAddNarrow}/>
+                                                    <MultipleInputs name={"broadband"} section={"Broadband filters"} mappedObj={BroadBandFilters} onChangeHandler={handleInputChange} onClinkHandler={handleInputAddBroad}/>
+                                                    <MultipleInputs name={"mounts"} section={"Mounts"} mappedObj={mounts} onChangeHandler={handleInputChange} onClinkHandler={handleInputMounts}/>
+                                                    <MultipleInputs name={"guides"} section={"Guide cameras"} mappedObj={guide} onChangeHandler={handleInputChange} onClinkHandler={handleInputGuide}/>
 
                                                 </div>
                                                 <Button type="submit" className="bg-gray-900 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Submit changes</Button>

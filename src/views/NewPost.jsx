@@ -27,45 +27,15 @@ const NewPost = () => {
                 method: "POST",
                 body: fileData
             })
+            console.log(fileData)
             return await response.json()
         } catch (error) {
             console.log(error, 'Errore in uploadFile')
         }
     }
 
-    const authString = btoa(`${process.env.REACT_APP_ASTRO_APP_ID}:${process.env.REACT_APP_ASTRO_APP_SECRET}`);
-    console.log(authString);
-
-    const params = {
-        term: "NGC6960",
-    }
-    const searchUrl = `${process.env.REACT_APP_ASTRONOMY_API}/search`
-
-    const queryString = `?term=${postForm.object}&match_type=fuzzy`;
-
-    const objFetch = async () => {
-        try {
-            const res = await fetch(`https://api.astronomyapi.com/api/v2/search${queryString}`, {
-                method: 'GET',
-
-                headers: {
-                    "X-Requested-With": "XMLHttpRequest",
-                    "Content-Type": "application/json",
-                    "Authorization": `Basic ${authString}`
-                },
-            })
-
-            const data = await res.json();
-            console.log(data)
-
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
     useEffect(() => {
         if (!session) navigate('/')
-        objFetch()
     }, []);
 
     const handleInputChange = (e) => {
@@ -89,7 +59,7 @@ const NewPost = () => {
                 const finalBody = {
                     object: postForm.object,
                     title: postForm.title,
-                    mainPic: uploadCover.cover,
+                    mainPic: uploadCover.url,
                     description: {
                         instrumentation: {
                             telescope: postForm.telescope,
@@ -135,16 +105,15 @@ const NewPost = () => {
                     body: JSON.stringify(finalBody),
                 })
                 setLoading(false)
+
             } catch(e) {
-                console.log(error)
+                console.log(e)
             }
         } else {
             alert('Carica un file')
             console.error('Carica un file!')
         }
-
     }
-
 
     return (
         <div className="">
