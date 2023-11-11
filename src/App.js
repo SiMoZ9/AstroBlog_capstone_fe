@@ -12,6 +12,7 @@ import Me from "./views/Me";
 import VerticalNav from "./components/nav/VerticalUserNav";
 import Me_instrumentation from "./views/Me_instrumentation";
 import {Me_post} from "./views/Me_post";
+import PostEdit from "./views/PostEdit";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path='/publish' element={<NewPost/>} />
                 <Route element={<DetailsContext />}>
                     <Route path='/skyPosts/:id' element={<PostDetail />} />
+                    <Route path='/skyPost/edit/:id' element={<PostEdit />} />
                 </Route>
 
                 <Route element={<UserContext />}>

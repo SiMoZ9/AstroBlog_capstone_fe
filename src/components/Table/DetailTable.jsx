@@ -73,7 +73,8 @@ const DetailTable = (
                             </Typography>
                         </th>
                         <td className="p-4">
-                            {filters.narrowband &&
+
+                            {filters && filters.narrowband &&
                                     <Typography variant="small" color="blue-gray" className="font-normal">
                                         {filters.narrowband.ha} {'\n'}
                                         {filters.narrowband.oiii} {'\n'}
@@ -81,7 +82,7 @@ const DetailTable = (
                                     </Typography>
                             }
 
-                            {filters.broadband &&
+                            {filters && filters.broadband &&
                                 <Typography variant="small" color="blue-gray" className="font-normal">
                                     {filters.broadband.l} {'\n'}
                                     {filters.broadband.r} {'\n'}
@@ -89,6 +90,12 @@ const DetailTable = (
                                     {filters.broadband.b}
                                 </Typography>
                             }
+
+                            {filters && filters.color && (
+                                <Typography variant="small" color="blue-gray" className="font-normal">
+                                    {filters.color.enanched}
+                                </Typography>
+                            )}
                         </td>
                     </tr>
                 ))}
@@ -133,11 +140,9 @@ const DetailTable = (
                             </td>
                         </tr>
                     ))}
-
                     </tbody>
                 </table>
             </Card>
-
         </div>
 
     );

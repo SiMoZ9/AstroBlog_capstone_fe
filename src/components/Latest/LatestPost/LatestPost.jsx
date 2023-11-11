@@ -54,6 +54,8 @@ const LatestPost = () => {
                                 author={post.author.userName}
                                 cover={post.mainPic}
                                 id={post._id}
+                                linkTo={`/skyPosts/${post._id}`}
+                                buttonText="Vai al post"
                             />
                         </>
                     ))

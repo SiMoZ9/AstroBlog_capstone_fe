@@ -36,7 +36,6 @@ const MyPosts = () => {
     return (
         <>
             <VerticalNav>
-
                 {loading && !error && <>
                     <RingLoader
                         size={150}
@@ -45,7 +44,7 @@ const MyPosts = () => {
                     />
                 </>}
 
-                {!loading && !error && (!myPosts.length) &&
+                {!loading && !error && (myPosts.length === 0) &&
                     <div className="w-screen h-full mt-12 flex flex-col items-center">
                         <FaRegSadTear className="text-[24em] mb-4"/>
                         <Typography variant="h1" className="text-4xl">
@@ -73,9 +72,14 @@ const MyPosts = () => {
                 }
 
                 {!loading && !error && myPosts.userInfo && myPosts.userInfo.map((post, i) => (
-                    <PostCard
-                        title={post.title}
-                    />
+                    <div className="w-36 m-4">
+                        <PostCard
+                            title={post.title}
+                            cover={post.mainPic}
+                            buttonText={"Modifica post"}
+                            linkTo={`/skyPost/edit/${post._id}`}
+                        />
+                    </div>
                 ))}
             </VerticalNav>
         </>
