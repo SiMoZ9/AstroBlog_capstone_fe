@@ -11,6 +11,7 @@ import UserContext from "./context/UserContext";
 import Me from "./views/Me";
 import VerticalNav from "./components/nav/VerticalUserNav";
 import Me_instrumentation from "./views/Me_instrumentation";
+import {Me_post} from "./views/Me_post";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                 <Route element={<UserContext />}>
                     <Route path='/account' element={<Me/>}/>
                     <Route path='/account/instruments' element={<Me_instrumentation />} />
+                    <Route path='/account/posts' element={<Me_post />} />
                 </Route>
             <Route/>
 

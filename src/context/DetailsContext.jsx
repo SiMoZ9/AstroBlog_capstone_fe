@@ -9,10 +9,9 @@ const DetailsContext = ({children}) => {
     const [error, setError] = useState("")
     const [details, setDetails] = useState({})
 
-    const [myPosts, setMyPosts] = useState({})
-
     const [typeOfView, setTypeOfView] = useState("")
     const [star, setStar] = useState({})
+
 
 
     const {id} = useParams()
@@ -40,13 +39,6 @@ const DetailsContext = ({children}) => {
             setLoading(false)
         })
             .catch((err) => setError(err))
-
-
-        setLoading(true)
-        fetchMyPosts.then((res) => {
-            setMyPosts(res)
-
-        })
     }, [])
 
 

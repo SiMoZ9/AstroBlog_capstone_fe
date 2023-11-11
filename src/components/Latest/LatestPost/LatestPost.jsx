@@ -34,7 +34,8 @@ const LatestPost = () => {
     return (
         <section>
             <div>{!loading && !error}</div>
-            <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 w-fit mx-auto">
+            <div
+                className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-center gap-y-20 gap-x-14 mt-10 mb-5 w-fit mx-auto">
                 {error && <h1>Errore durante il caricamento dei post</h1>}
                 {loading && !error && (
                     <RingLoader
@@ -43,7 +44,6 @@ const LatestPost = () => {
                         data-testid="loader"
                     />
                 )}
-
 
                 {!loading &&
                     !error && post.posts && post.posts.map(post => (
@@ -57,7 +57,7 @@ const LatestPost = () => {
                             />
                         </>
                     ))
-                    }
+                }
             </div>
         </section>
     )
