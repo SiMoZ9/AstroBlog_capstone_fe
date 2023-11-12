@@ -35,7 +35,7 @@ function PostCard(
 
                 <div className="flex">
                     <img src={"https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1699717106~exp=1699717706~hmac=5467ea3f2c1f93e1c653a6c8bd4f23d1e337588ba2c3cfb1392b119577a54d64"} alt="card-image" className="rounded-full mr-1 w-8 h-8"/>
-                    <Link to={"#"}>
+                    <Link to={`/profile/${id}`}>
                         <Typography variant="h6" color="blue-gray" className="text-blue-600 underline">
                             {author}
                         </Typography>

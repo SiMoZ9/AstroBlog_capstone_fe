@@ -52,8 +52,8 @@ const LatestPost = () => {
                                 key={nanoid()}
                                 title={post.title}
                                 author={post.author.userName}
+                                id={post.author._id}
                                 cover={post.mainPic}
-                                id={post._id}
                                 linkTo={`/skyPosts/${post._id}`}
                                 buttonText="Vai al post"
                             />

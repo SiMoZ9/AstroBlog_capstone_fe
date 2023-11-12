@@ -119,9 +119,12 @@ const NewPost = () => {
         <div className="">
             <NavigationPostLogin/>
             <PostForm
+                header={"Nuovo post"}
                 change={handleInputChange}
                 submit={handleSubmit}
                 onChangeSetFile={onChangeSetFile}
+                isFileUploadEnabled={true}
+                isMenuEnabled={true}
             />
         </div>
     )

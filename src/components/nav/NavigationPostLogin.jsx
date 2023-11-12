@@ -7,7 +7,7 @@ import {
     Collapse
 } from "@material-tailwind/react";
 
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useNavigate, useParams} from "react-router-dom"
 import {MdAddPhotoAlternate} from 'react-icons/md'
 import logo from "../../assets/logo_upscayl_16x_realesrgan-x4plus-anime.png";
 
@@ -16,6 +16,8 @@ const NavigationPostLogin = ({userName, userPic}) => {
     const [openAccountSettings, setOpenAccountSettings] = useState(false);
 
     const navigate = useNavigate()
+
+    const {id} = useParams()
 
     useEffect(() => {
         window.addEventListener(
@@ -91,7 +93,7 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                 <span>Il tuo account</span>
                                 <Collapse open={openAccountSettings}>
                                     <div className="flex items-center gap-x-1 mt-1">
-                                        <Link to='/account'>
+                                        <Link to={`/account/${id}`}>
                                             <Button fullWidth variant="filled" color="white" size="sm">
                                                 <span className="flex items-center justify-center text-[10px]">Impostazioni</span>
                                             </Button>
