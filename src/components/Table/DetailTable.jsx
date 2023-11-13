@@ -45,9 +45,13 @@ const DetailTable = (
                                 </Typography>
                             </th>
                             <td className="p-4">
-                                <Typography variant="small" color="blue-gray" className="font-normal">
-                                    {telescope}
-                                </Typography>
+                                <ul>
+                                    {
+                                        telescope.map((telescope, index) => (
+                                            <li key={nanoid()}>{(Object.values(telescope))}</li>
+                                        ))
+                                    }
+                                </ul>
                             </td>
                         </tr>
                     ))}

@@ -4,7 +4,7 @@ import {
     Typography,
     Button,
     IconButton,
-    Collapse
+    Collapse, MobileNav
 } from "@material-tailwind/react";
 
 import {Link, useNavigate, useParams} from "react-router-dom"
@@ -93,7 +93,7 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                 <span>Il tuo account</span>
                                 <Collapse open={openAccountSettings}>
                                     <div className="flex items-center gap-x-1 mt-1">
-                                        <Link to={`/account/${id}`}>
+                                        <Link to={`/account`}>
                                             <Button fullWidth variant="filled" color="white" size="sm">
                                                 <span className="flex items-center justify-center text-[10px]">Impostazioni</span>
                                             </Button>
@@ -108,7 +108,6 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                         </Button>
                                     </div>
                                 </Collapse>
-
                             </Button>
                         </div>
                         <IconButton
@@ -150,19 +149,45 @@ const NavigationPostLogin = ({userName, userPic}) => {
                         </IconButton>
                     </div>
                 </div>
-                <Collapse open={openNav}>
+                <MobileNav open={openNav}>
                     {navList}
-                    <div className="flex items-center gap-x-1">
+                    <div className="flex items-center gap-x-1 h-auto">
                         <Link to="/publish">
-                            <Button fullWidth variant="gradient" size="sm" className="">
+                            <Button
+                                variant="gradient"
+                                size="sm"
+                                className="lg:inline-block"
+                            >
                                 <span className="flex items-center justify-center">Carica immagine <MdAddPhotoAlternate className="ml-1"/></span>
                             </Button>
                         </Link>
-                        <Button fullWidth variant="gradient" size="sm" className="">
+                        <Button
+                            variant="gradient"
+                            size="sm"
+                            className="lg:inline-block"
+                            onClick={() => setOpenAccountSettings(!openAccountSettings)}
+                        >
                             <span>Il tuo account</span>
+                            <Collapse open={openAccountSettings}>
+                                <div className="flex items-center gap-x-1 mt-1">
+                                    <Link to={`/account`}>
+                                        <Button fullWidth variant="filled" color="white" size="sm">
+                                            <span className="flex items-center justify-center text-[10px]">Impostazioni</span>
+                                        </Button>
+                                    </Link>
+                                    <Button fullWidth variant="filled" color="white" size="sm">
+                                            <span className="flex items-center justify-center text-[10px]" onClick={
+                                                () => {
+                                                    localStorage.clear()
+                                                    navigate('/')
+                                                }
+                                            }>Esci</span>
+                                    </Button>
+                                </div>
+                            </Collapse>
                         </Button>
                     </div>
-                </Collapse>
+                </MobileNav>
             </Navbar>
         </div>
     );
