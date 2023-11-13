@@ -6,6 +6,7 @@ import {PiInstagramLogo, PiMetaLogo} from "react-icons/pi";
 import {Link, useNavigate} from "react-router-dom";
 import {RiTwitterXLine} from "react-icons/ri";
 import MultipleInputs from "../MultipleInputs/MultipleInputs";
+import NavAccount from "../nav/NavAccount";
 
 const InstrumentInfo = () => {
 
@@ -64,10 +65,10 @@ const InstrumentInfo = () => {
 
     return (
         <>
-            <VerticalNav>
+            <NavAccount />
                 {!loading && !error && user.userEmail && (
                     <>
-                        <div className="flex">
+                        <div className="flex w-full justify-center">
                             <div>
                                 <div className="py-6">
                                     <div className="flex justify-center px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
@@ -92,10 +93,7 @@ const InstrumentInfo = () => {
                             </div>
                         </div>
                     </>
-
                 )}
-            </VerticalNav>
-
         </>    )
 }
 

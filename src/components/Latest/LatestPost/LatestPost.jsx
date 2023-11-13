@@ -51,6 +51,7 @@ const LatestPost = () => {
                             <PostCard
                                 key={nanoid()}
                                 title={post.title}
+                                avatar={post.author.avatar}
                                 author={post.author.userName}
                                 id={post.author._id}
                                 cover={post.mainPic}

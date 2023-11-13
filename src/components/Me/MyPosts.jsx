@@ -8,6 +8,7 @@ import {Button, Typography} from "@material-tailwind/react";
 import {FaRegSadTear} from "react-icons/fa";
 import {Link} from "react-router-dom";
 import {MdAddPhotoAlternate} from "react-icons/md";
+import NavAccount from "../nav/NavAccount";
 
 const MyPosts = () => {
 
@@ -35,8 +36,9 @@ const MyPosts = () => {
 
     return (
         <>
-            <VerticalNav>
-                {loading && !error && <>
+            <NavAccount />
+
+            {loading && !error && <>
                     <RingLoader
                         size={150}
                         aria-label="Loading Spinner"
@@ -72,7 +74,7 @@ const MyPosts = () => {
                 }
 
                 {!loading && !error && myPosts.userInfo && myPosts.userInfo.map((post, i) => (
-                    <div className="w-36 m-4">
+                    <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-center gap-y-20 gap-x-14 mt-10 mb-5 w-fit mx-auto bg-gray-100 p-4 rounded-[20px]">
                         <PostCard
                             title={post.title}
                             cover={post.mainPic}
@@ -81,7 +83,6 @@ const MyPosts = () => {
                         />
                     </div>
                 ))}
-            </VerticalNav>
         </>
     )
 }

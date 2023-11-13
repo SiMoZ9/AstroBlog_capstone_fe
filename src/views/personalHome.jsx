@@ -22,7 +22,9 @@ const PersonalHome = () => {
                 title={"Ultimi post"}
                 needButton={false}
             />
+            <div className="p-8">
             <LatestPost />
+            </div>
             <Jumbotron
                 title={"Ultime notizie dallo spazio"}
                 needButton={false}
