@@ -23,13 +23,15 @@ const PersonalHome = () => {
                 needButton={false}
             />
             <div className="p-8">
-            <LatestPost />
+                <LatestPost/>
             </div>
             <Jumbotron
                 title={"Ultime notizie dallo spazio"}
                 needButton={false}
             />
-            <LatestNews />
+            <div className="p-8">
+                <LatestNews/>
+            </div>
         </>
     );
 };

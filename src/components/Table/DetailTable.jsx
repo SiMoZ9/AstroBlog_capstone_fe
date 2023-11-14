@@ -5,10 +5,13 @@ const DetailTable = (
     {
         telescope,
         camera,
-        filters,
+        narrow,
+        broad,
         lat,
         long,
         date,
+        guide,
+        mounts,
         constellation,
         ra,
         dec,
@@ -20,8 +23,11 @@ const DetailTable = (
     const TABLE_ROWS = [
         {
             telescope: telescope,
-            camera: camera,
-            filters: filters,
+            camera: telescope,
+            narrowband: narrow,
+            broadband: broad,
+            mounts: mounts,
+            guide: guide,
             lat: lat,
             long: long,
             date: date,
@@ -31,85 +37,96 @@ const DetailTable = (
 
     return (
         <div>
-            <Card className="w-auto h-auto overflow-scroll">
+            <Card className="w-[100rem] h-auto overflow-scroll">
                 <Typography variant="h3" className="text-center m-4">
                     Instrumentation
                 </Typography>
                 <table className="w-full min-w-max table-auto text-center">
                     <tbody>
                     {TABLE_ROWS.map(({telescope}, index) => (
-                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-48">
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-20">
                             <th>
                                 <Typography variant="h6">
                                     Telescope
                                 </Typography>
                             </th>
                             <td className="p-4">
-                                <ul>
-                                    {
-                                        telescope.map((telescope, index) => (
-                                            <li key={nanoid()}>{(Object.values(telescope))}</li>
-                                        ))
-                                    }
-                                </ul>
+                                {telescope}
                             </td>
                         </tr>
                     ))}
 
-                    {TABLE_ROWS.map(({telescope, camera, filters}, index) => (
-                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-48">
+                    {TABLE_ROWS.map(({camera}, index) => (
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-20">
                             <th>
                                 <Typography variant="h6">
                                     Camera
                                 </Typography>
                             </th>
                             <td className="p-4">
-                                <Typography variant="small" color="blue-gray" className="font-normal">
-                                    {camera}
-                                </Typography>
+                                {camera}
                             </td>
                         </tr>
                     ))}
 
-                    {TABLE_ROWS.map(({filters}) => (
-                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-48">
+                    {TABLE_ROWS.map(({narrowband}) => (
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-20">
                             <th>
                                 <Typography variant="h6">
-                                    Filters
+                                    Narrowband filters
                                 </Typography>
                             </th>
                             <td className="p-4">
-
-                                {filters && filters.narrowband &&
-                                    <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {filters.narrowband.ha} {'\n'}
-                                        {filters.narrowband.oiii} {'\n'}
-                                        {filters.narrowband.sii}
-                                    </Typography>
-                                }
-
-                                {filters && filters.broadband &&
-                                    <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {filters.broadband.l} {'\n'}
-                                        {filters.broadband.r} {'\n'}
-                                        {filters.broadband.g} {'\n'}
-                                        {filters.broadband.b}
-                                    </Typography>
-                                }
-
-                                {filters && filters.color && (
-                                    <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {filters.color.enanched}
-                                    </Typography>
-                                )}
+                                {narrowband}
                             </td>
                         </tr>
                     ))}
+
+
+                    {TABLE_ROWS.map(({broadband}) => (
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-20">
+                            <th>
+                                <Typography variant="h6">
+                                    Broadband filters
+                                </Typography>
+                            </th>
+                            <td className="p-4">
+                                {broadband}
+                            </td>
+                        </tr>
+                    ))}
+
+                    {TABLE_ROWS.map(({mounts}) => (
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-20">
+                            <th>
+                                <Typography variant="h6">
+                                    Mounts
+                                </Typography>
+                            </th>
+                            <td className="p-4">
+                                {mounts}
+                            </td>
+                        </tr>
+                    ))}
+
+                    {TABLE_ROWS.map(({guide}) => (
+                        <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-20">
+                            <th>
+                                <Typography variant="h6">
+                                    Guide cameras
+                                </Typography>
+                            </th>
+                            <td className="p-4">
+                                {guide}
+                            </td>
+                        </tr>
+                    ))}
+
                     </tbody>
                 </table>
             </Card>
             {enableDesc && (
-                <Card className="w-[56rem] h-48 overflow-scroll mt-12">
+                <Card className="w-[100rem] h-auto overflow-scroll mt-12">
                     <Typography variant="h3" className="text-center">
                         Description
                     </Typography>

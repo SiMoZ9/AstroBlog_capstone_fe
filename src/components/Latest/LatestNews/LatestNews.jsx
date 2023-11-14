@@ -26,10 +26,9 @@ const LatestNews = () => {
     const jwstFetch = async () => {
         try {
             setLoading(true)
-            const jwst = await fetch(`https://api.jwstapi.com/all/type/jpg`, {
+            const jwst = await fetch(`https://api.nasa.gov/planetary/apod?count=3&api_key=VUUqStlksMV8EHLZcKCyZ3T6aKksTzaEgvcuOQBk`, {
                     headers: {
                         "Content-Type": "application/json",
-                        'X-API-KEY': `${API_KEY}`
                     }
                 }
             )
@@ -70,6 +69,10 @@ const LatestNews = () => {
     console.log(skippedElements)
     console.log(skippedElements + 8)
 
+    console.log(JWSTdata)
+    const currentDate = new Date()
+    console.log(currentDate)
+
     return (
         <>
             <div className="flex flex-col justify-center items-center m-5 p-4 rounded-[20px] bg-gray-200">
@@ -91,9 +94,9 @@ const LatestNews = () => {
                     {!loading && !error && (
                         <>
                             <NasaCarousel
-                                pic1={JWSTdata.body[0].location}
-                                pic2={JWSTdata.body[1].location}
-                                pic3={JWSTdata.body[2].location}
+/*                                pic1={JWSTdata[0].hdurl}
+                                pic2={JWSTdata[1].hdurl}
+                                pic3={JWSTdata[2].hdurl}*/
                             />
                         </>
                     )}

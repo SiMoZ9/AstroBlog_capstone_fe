@@ -27,7 +27,7 @@ function PostCard(
                 <img
                     src={cover}
                     alt="card-image"
-                    className="w-full"
+                    className="w-full h-full"
                 />
             </CardHeader>
             <CardBody>
@@ -36,7 +36,7 @@ function PostCard(
                 </Typography>
 
                 <div className="flex">
-                    <img src={avatar} alt="card-image" className="rounded-full  mr-1 w-8 h-8"/>
+                    <img src={avatar} alt="card-image" className="rounded-full mr-1 w-8 h-8"/>
                     <Link to={`/profile/${id}`}>
                         <Typography variant="h6" color="blue-gray" className="text-blue-600 underline">
                             {author}

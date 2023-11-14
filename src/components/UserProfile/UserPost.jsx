@@ -44,8 +44,8 @@ const UserPost = () => {
                 {!thisLoading && !thisError && profile &&
                     <>
                         <div className="w-full flex justify-center mt-6">
-                            <Typography variant="h1">
-                                I post di {profile.userToGet.userName}
+                            <Typography variant="h4" className="text-center">
+                                {profile.userToGet.userName}'s posts
                             </Typography>
                         </div>
                     </>

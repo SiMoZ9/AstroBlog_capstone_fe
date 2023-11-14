@@ -4,6 +4,7 @@ import {Typography} from "@material-tailwind/react";
 import DetailTable from "../Table/DetailTable";
 import StarMap from "../StarMap/StarMap";
 import {DetailProvider} from "../../context/DetailsContext";
+import {Link} from "react-router-dom";
 
 const DetailComponent = () => {
 
@@ -11,9 +12,9 @@ const DetailComponent = () => {
 
     return (
         <>
-            <NavigationPostLogin />
+            <NavigationPostLogin/>
             {!loading && !error && details && (
-                <main className="w-screen h-screen pt-12 bg-gray-900">
+                <main className="w-screen h-full pt-12 bg-gray-900">
                     <div className="flex flex-col w-96">
 
                         <div className="flex flex-col justify-center w-screen items-center">
@@ -31,10 +32,14 @@ const DetailComponent = () => {
                             />
 
                             <div className="flex items-center justify-center p-4">
-                                <img src={details.author.avatar} alt="avatar" className="h-20 w-20 rounded-full object-cover object-center"/>
-                                <Typography variant="h1" color="white" className="ml-4 text-2xl">
-                                    {details.author.userName}
-                                </Typography>
+                                <img src={details.author.avatar} alt="avatar"
+                                     className="h-20 w-20 rounded-full object-cover object-center"/>
+                                <Link to={`/profile/${details.author._id}`}>
+
+                                    <Typography variant="h1" color="white" className="ml-4 text-2xl">
+                                        {details.author.userName}
+                                    </Typography>
+                                </Link>
                             </div>
 
                             <div>
@@ -48,10 +53,14 @@ const DetailComponent = () => {
                                     ra={details.description.place.coordinates.ra}
                                     dec={details.description.place.coordinates.dec}
                                     date={details.description.place.coordinates.date}
+                                    enableDesc={true}
                                 />
                             </div>
 
-                            <StarMap />
+                            <div className="mt-12 w-[100rem] bg-white rounded-[20px]">
+                                <Typography variant="h3" className="text-center m-4">Star chart</Typography>
+                                <StarMap/>
+                            </div>
                             {console.log(star)}
                         </div>
                     </div>

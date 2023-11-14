@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Button,
-} from "@material-tailwind/react";
+import {Button, Card, CardBody, CardFooter, CardHeader, Typography,} from "@material-tailwind/react";
 import {Link} from "react-router-dom";
+
 const NewsCard = ({title, author, description, url, imageUrl}) => {
     return (
-        <Card className="mt-6 w-96">
+        <Card className="mt-6 w-auto">
             <CardHeader color="blue-gray" className="relative h-56">
                 <img
                     src={imageUrl}
