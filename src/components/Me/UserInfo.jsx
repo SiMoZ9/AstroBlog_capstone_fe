@@ -60,17 +60,19 @@ const UserInfo = () => {
 
     return (
         <>
-            <NavAccount />
+            <NavAccount/>
             {!loading && !error && user.userEmail && (
-                <div className="flex flex-col justify-center items-center w-full xl:flex-row">
-                    <div className="flex flex-col justify-center items-center ">
+                <div className={`flex flex-col justify-center items-center w-full xl:flex-row
+                    bg-[url('https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover bg-no-repeat bg-gray-700 bg-blend-soft-light`}
+                >
+                    <div className="flex flex-col justify-center items-center">
                         <div>
                             <div className="py-6">
-                                <div className="flex flex-col px-4 mx-auto max-w-xl sm:px-6 md:px-8">
+                                <div className="flex flex-col px-4 sm:px-6 md:px-8">
                                     <div id="user"
-                                         className="w-96 flex justify-between items-center rounded-[20px] p-4 bg-gray-100">
+                                         className="w-96 flex justify-between items-center rounded-[20px] p-4 bg-blue_gray-50">
                                         <img
-                                            className="rounded-full w-20"
+                                            className="rounded-full w-20 h-20"
                                             src={user.userEmail.avatar}
                                         />
 

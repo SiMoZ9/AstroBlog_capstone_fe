@@ -40,6 +40,8 @@ const UserPost = () => {
     }, []);
 
 
+    console.log(profile)
+
     return (
         <main>
             <div>
@@ -56,8 +58,15 @@ const UserPost = () => {
                             />
                         )}
 
-                        {!thisLoading && !thisError && (
-                                <DetailTable />
+                        {!thisLoading && !thisError && profile && (
+                                <DetailTable
+                                    telescope={profile.userToGet.instruments.telescopes}
+                                    camera={profile.userToGet.instruments.camera}
+                                    narrow={profile.userToGet.instruments.narrowband}
+                                    broad={profile.userToGet.instruments.broadband}
+                                    mounts={profile.userToGet.instruments.mounts}
+                                    guide={profile.userToGet.instruments.guide}
+                                />
                         )}
 
                     </div>

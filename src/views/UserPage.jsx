@@ -25,7 +25,9 @@ const UserPage = () => {
                         <UserPost/>
                     </div>
 
-                    <UserIntruments />
+                    <UserIntruments
+
+                    />
                 </>
             }
         </>

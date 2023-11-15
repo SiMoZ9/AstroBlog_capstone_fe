@@ -4,7 +4,6 @@ import NavigationPostLogin from "../components/nav/NavigationPostLogin";
 const PostEdit = () => {
     return (
         <>
-            <NavigationPostLogin/>
             <PostEditComponent />
         </>
     );

@@ -26,7 +26,7 @@ const DetailComponent = () => {
                             </Typography>
 
                             <img
-                                className="h-96 rounded-lg object-cover object-center mt-4 mb-4"
+                                className="lg:h-[100vh] rounded-lg object-cover object-center mt-4 mb-4"
                                 src={details.mainPic}
                                 alt="mainPic"
                             />
@@ -46,7 +46,14 @@ const DetailComponent = () => {
                                 <DetailTable
                                     telescope={details.description.instrumentation.telescope}
                                     camera={details.description.instrumentation.camera}
-                                    filters={details.description.instrumentation.filters}
+                                    narrow={`${details.description.instrumentation.filters.narrowband.ha};${details.description.instrumentation.filters.narrowband.oiii};${details.description.instrumentation.filters.narrowband.sii}`}
+                                    broadband={`${`
+                                        ${details.description.instrumentation.filters.broadband.l};
+                                        ${details.description.instrumentation.filters.broadband.r};
+                                        ${details.description.instrumentation.filters.broadband.g};
+                                        ${details.description.instrumentation.filters.broadband.b}`}`}
+                                    mounts={details.description.instrumentation.mounts}
+                                    guide={details.description.instrumentation.guides}
                                     constellation={details.description.place.constellation}
                                     lat={details.description.place.coordinates.latitude}
                                     long={details.description.place.coordinates.longitude}
@@ -57,7 +64,7 @@ const DetailComponent = () => {
                                 />
                             </div>
 
-                            <div className="mt-12 w-[100rem] bg-white rounded-[20px]">
+                            <div className="mt-12 w-full p-4 xl:w-full 2xl:w-[100rem] overflow-scroll bg-white rounded-[20px]">
                                 <Typography variant="h3" className="text-center m-4">Star chart</Typography>
                                 <StarMap/>
                             </div>

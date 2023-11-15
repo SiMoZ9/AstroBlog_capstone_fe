@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const NewsCard = ({title, author, description, url, imageUrl}) => {
     return (
         <Card className="mt-6 w-auto">
-            <CardHeader color="blue-gray" className="relative h-56">
+            <CardHeader className="relative h-56 text-blue_gray-200">
                 <img
                     src={imageUrl}
                     alt="newsImage"
@@ -13,21 +13,21 @@ const NewsCard = ({title, author, description, url, imageUrl}) => {
                 />
             </CardHeader>
             <CardBody>
-                <Typography variant="h5" color="blue-gray" className="mb-2">
+                <Typography variant="h5" className="mb-2 text-mat_gray-900">
                     {title}
                 </Typography>
 
-                <Typography variant="h6" color="blue-gray" className="mb-2 text-blue-500">
+                <Typography variant="h6" className="mb-2 text-mat_blue-500">
                     {author}
                 </Typography>
 
-                <Typography>
+                <Typography variant="small" className="text-blue_gray-600">
                     {description}
                 </Typography>
             </CardBody>
             <Link to={url}>
                 <CardFooter className="pt-0">
-                    <Button>Read More</Button>
+                    <Button className="bg-blue_gray-900">Read More</Button>
                 </CardFooter>
             </Link>
         </Card>

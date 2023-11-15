@@ -3,6 +3,7 @@ import PostForm from "../components/posts/PostForm";
 import NavigationPostLogin from "../components/nav/NavigationPostLogin";
 import useSession from "../hooks/useSession";
 import {useNavigate} from "react-router-dom";
+
 const NewPost = () => {
 
     const [postForm, setPostForm] = useState({})
@@ -106,7 +107,7 @@ const NewPost = () => {
                 })
                 setLoading(false)
 
-            } catch(e) {
+            } catch (e) {
                 console.log(e)
             }
         } else {
@@ -116,16 +117,19 @@ const NewPost = () => {
     }
 
     return (
-        <div className="">
+        <div className="bg-[url(https://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)] bg-center bg-cover bg-no-repeat bg-gray-700 bg-blend-soft-light">
             <NavigationPostLogin/>
-            <PostForm
-                header={"Nuovo post"}
-                change={handleInputChange}
-                submit={handleSubmit}
-                onChangeSetFile={onChangeSetFile}
-                isFileUploadEnabled={true}
-                isMenuEnabled={true}
-            />
+            <div className="w-auto mt-12">
+                <PostForm
+                    header={"New post"}
+                    change={handleInputChange}
+                    submit={handleSubmit}
+                    onChangeSetFile={onChangeSetFile}
+                    isFileUploadEnabled={true}
+                    isMenuEnabled={true}
+                    buttonText={"Post"}
+                />
+            </div>
         </div>
     )
 }

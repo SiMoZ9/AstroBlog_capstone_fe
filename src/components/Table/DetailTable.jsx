@@ -37,11 +37,11 @@ const DetailTable = (
 
     return (
         <div>
-            <Card className="w-[100rem] h-auto overflow-scroll">
+            <Card className="w-full p-4 xl:w-full 2xl:w-[100rem] overflow-scroll">
                 <Typography variant="h3" className="text-center m-4">
                     Instrumentation
                 </Typography>
-                <table className="w-full min-w-max table-auto text-center">
+                <table className="lg:w-full lg:min-w-max table-auto text-center">
                     <tbody>
                     {TABLE_ROWS.map(({telescope}, index) => (
                         <tr key={nanoid()} className="even:bg-blue-gray-50/50 h-20">
@@ -126,7 +126,7 @@ const DetailTable = (
                 </table>
             </Card>
             {enableDesc && (
-                <Card className="w-[100rem] h-auto overflow-scroll mt-12">
+                <Card className="w-full p-4 xl:w-full 2xl:w-[100rem] overflow-scroll mt-12">
                     <Typography variant="h3" className="text-center">
                         Description
                     </Typography>

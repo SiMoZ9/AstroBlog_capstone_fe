@@ -5,8 +5,7 @@ import {Typography} from "@material-tailwind/react";
 import {useFetch} from "../../../hooks/useFetch";
 import NewsCard from "../../NewsCard/NewsCard";
 import ResponsivePagination from 'react-responsive-pagination';
-import 'react-responsive-pagination/themes/classic.css';
-import login from "../../../views/Login";
+import pagination from './pagination.css'
 
 const LatestNews = () => {
 
@@ -26,9 +25,10 @@ const LatestNews = () => {
     const jwstFetch = async () => {
         try {
             setLoading(true)
-            const jwst = await fetch(`https://api.nasa.gov/planetary/apod?count=3&api_key=VUUqStlksMV8EHLZcKCyZ3T6aKksTzaEgvcuOQBk`, {
+            const jwst = await fetch(`https://api.jwstapi.com/all/suffix/_cal?page=1&perPage=10`, {
                     headers: {
                         "Content-Type": "application/json",
+                        "X-API-KEY": `${API_KEY}`
                     }
                 }
             )
@@ -94,9 +94,9 @@ const LatestNews = () => {
                     {!loading && !error && (
                         <>
                             <NasaCarousel
-/*                                pic1={JWSTdata[0].hdurl}
-                                pic2={JWSTdata[1].hdurl}
-                                pic3={JWSTdata[2].hdurl}*/
+                                pic1={JWSTdata.body[0].location}
+                                pic2={JWSTdata.body[1].location}
+                                pic3={JWSTdata.body[2].location}
                             />
                         </>
                     )}
@@ -133,13 +133,14 @@ const LatestNews = () => {
                             </>
                         )).slice(skippedElements, skippedElements + 8)
                     )}
-                <div className="block">
+
                     <ResponsivePagination
+                        className="pagination"
                         current={currentPage}
                         total={totalPages}
                         onPageChange={onClickPagination}
                     />
-                </div>
+
             </div>
         </>
     )

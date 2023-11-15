@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react';
-import {Input, Typography} from "@material-tailwind/react";
 import {DetailProvider} from "../../context/DetailsContext";
 import PostForm from "./PostForm";
 import {useNavigate, useParams} from "react-router-dom";
+import NavigationPostLogin from "../nav/NavigationPostLogin";
 
 const PostEditComponent = () => {
 
@@ -70,7 +70,7 @@ const PostEditComponent = () => {
                 })
                 setLoading(false)
 
-            } catch(e) {
+            } catch (e) {
                 console.log(e)
             }
         } else {
@@ -82,26 +82,33 @@ const PostEditComponent = () => {
     return (
         <>
             {!loading && !error && details &&
-            <PostForm
-                header={"Modifica post"}
-                isMenuEnabled={false}
-                isFileUploadEnabled={true}
-                submit={handleSubmit}
-                change={handleInputChange}
-                onChangeSetFile={onChangeSetFile}
-                mainPicPlaceholder={details.mainPic}
-                titlePlaceholder={details.title}
-                descPlaceholder={details.description.text}
-                cameraPlaceholder={details.description.instrumentation.camera}
-                constPlaceholder={details.description.place.constellation}
-                datePlaceholder={details.description.place.coordinates.date}
-                telescopePlaceholder={details.description.instrumentation.telescope}
-                latPlaceholder={details.description.place.coordinates.latitude}
-                longPlaceholder={details.description.place.coordinates.longitude}
-                raPlaceholder={details.description.place.coordinates.ra}
-                decPlaceholder={details.description.place.coordinates.dec}
-                buttonText={"Modifica post"}
-            />
+                <div
+                    className="bg-[url(https://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)] bg-center bg-cover bg-no-repeat bg-gray-700 bg-blend-soft-light">
+                    <NavigationPostLogin/>
+                    <div className="w-auto mt-12">
+
+                        <PostForm
+                            header={"Modifica post"}
+                            isMenuEnabled={false}
+                            isFileUploadEnabled={true}
+                            submit={handleSubmit}
+                            change={handleInputChange}
+                            onChangeSetFile={onChangeSetFile}
+                            mainPicPlaceholder={details.mainPic}
+                            titlePlaceholder={details.title}
+                            descPlaceholder={details.description.text}
+                            cameraPlaceholder={details.description.instrumentation.camera}
+                            constPlaceholder={details.description.place.constellation}
+                            datePlaceholder={details.description.place.coordinates.date}
+                            telescopePlaceholder={details.description.instrumentation.telescope}
+                            latPlaceholder={details.description.place.coordinates.latitude}
+                            longPlaceholder={details.description.place.coordinates.longitude}
+                            raPlaceholder={details.description.place.coordinates.ra}
+                            decPlaceholder={details.description.place.coordinates.dec}
+                            buttonText={"Modifica post"}
+                        />
+                    </div>
+                </div>
             }
         </>
     );

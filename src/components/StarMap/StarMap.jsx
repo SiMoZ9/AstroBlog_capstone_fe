@@ -53,25 +53,35 @@ const StarMap = ({type}) => {
             console.log(res)
             setStar(res)
             console.log(star)
+            setLoading(false)
+
         }).catch(err => {
             setError(err)
+            setLoading(false)
+
         })
-        setLoading(false)
     }, []);
 
     return (
         <>
             {console.log(loading)}
             {loading && !error && (
-                <RingLoader
-                    size={150}
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                />
+                <div className="flex flex-col items-center justify-center mt-6">
+                    <RingLoader
+                        size={150}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+
+                    <Typography variant="h6">
+                        Loading star chart
+                    </Typography>
+
+                </div>
             )}
 
             {!loading && !error && star.data && (
-            <Card>
+            <Card className="w-full p-4 lg:w-[100rem] md:w-auto">
                 <img src={star.data.imageUrl} alt="star-chart" />
             </Card>
             )

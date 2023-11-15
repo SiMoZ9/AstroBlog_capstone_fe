@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Button, avatar,
-} from "@material-tailwind/react";
+import {Button, Card, CardBody, CardFooter, CardHeader, Typography,} from "@material-tailwind/react";
 import {Link} from "react-router-dom";
 
 function PostCard(
@@ -36,7 +29,8 @@ function PostCard(
                 </Typography>
 
                 <div className="flex">
-                    <img src={avatar} alt="card-image" className="rounded-full mr-1 w-8 h-8"/>
+
+                    <img src={avatar} alt="avatar" className="rounded-full mr-1 w-8 h-8"/>
                     <Link to={`/profile/${id}`}>
                         <Typography variant="h6" color="blue-gray" className="text-blue-600 underline">
                             {author}
@@ -50,7 +44,7 @@ function PostCard(
             </CardBody>
             <CardFooter className="pt-0">
                 <Link to={linkTo}>
-                <Button>{buttonText}</Button>
+                    <Button>{buttonText}</Button>
                 </Link>
             </CardFooter>
         </Card>
