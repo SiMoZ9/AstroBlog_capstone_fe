@@ -100,8 +100,8 @@ const InstrumentInfo = () => {
             {!loading && !error && user.userEmail && (
 
                 <>
-                    <div className="flex flex-col w-full justify-center">
-                        <div className="flex justify-center w-full">
+                    <div className="flex flex-col w-full justify-center bg-[url('https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover bg-no-repeat bg-gray-800 bg-blend-soft-light">
+                        <div className="flex justify-center w-full mt-6">
                             <DetailTable
                                 telescope={user.userEmail.instruments.telescopes}
                                 camera={user.userEmail.instruments.camera}
@@ -113,11 +113,11 @@ const InstrumentInfo = () => {
                         </div>
 
                         <div className="mt-6">
-                            <Typography variant="h3" className="text-center mt-4">Edit instrumentation</Typography>
+                            <Typography variant="h3" className="text-center mt-4 text-mat_gray-300">Edit instrumentation</Typography>
                             <div className="py-6">
                                 <div className="flex justify-center px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
                                     <form
-                                        className="w-screen flex flex-col justify-center rounded-[20px] p-4 bg-gray-100"
+                                        className="w-screen flex flex-col justify-center rounded-[20px] p-12 bg-gray-100"
                                         onSubmit={handleSubmit}>
                                         <div>
                                             <Typography

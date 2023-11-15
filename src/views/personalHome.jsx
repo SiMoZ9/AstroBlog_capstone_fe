@@ -20,7 +20,9 @@ const PersonalHome = () => {
             <NavigationPostLogin/>
             <Jumbotron
                 title={"Ultimi post"}
-                needButton={false}
+                needButton={true}
+                buttonText={"Vedi tutti i post"}
+                linkTo={'/skyPosts/all'}
             />
             <div className="p-8">
                 <LatestPost/>

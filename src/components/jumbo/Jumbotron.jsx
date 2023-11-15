@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, Typography} from "@material-tailwind/react";
+import {Link} from "react-router-dom";
 
-export const Jumbotron = ({title, subtitle, buttonText, needButton}) => {
+export const Jumbotron = ({title, subtitle, buttonText, needButton, linkTo}) => {
     return (
         <main>
             <section
@@ -10,9 +11,14 @@ export const Jumbotron = ({title, subtitle, buttonText, needButton}) => {
                     <div className="flex flex-col items-center">
                         <Typography variant="h1" color="white" className="text-center">{title}</Typography>
                         <Typography variant="lead" color="white" className="text-center">{subtitle}</Typography>
-                        {needButton && <Button className="bg-blue-gray-900 mt-1">
-                            {buttonText}
-                        </Button>
+                        {needButton &&
+                            (
+                                <Link to={linkTo}>
+                                <Button className="bg-blue-gray-900 mt-1">
+                                    {buttonText}
+                                </Button>
+                                </Link>
+                        )
                         }
                     </div>
                 </div>

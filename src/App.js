@@ -14,6 +14,7 @@ import {Me_post} from "./views/Me_post";
 import PostEdit from "./views/PostEdit";
 import UserPage from "./views/UserPage";
 import ProfileContext from "./context/ProfileContext";
+import AllPosts from "./views/AllPosts";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                 <Route element={<ProtectedRoutes/>}/>
                 <Route path='/personalHome' element={<PersonalHome/>}/>
                 <Route path='/publish' element={<NewPost/>}/>
+                <Route path='/skyPosts/all' element={<AllPosts />} />
 
                 <Route element={<DetailsContext/>}>
                     <Route path='/skyPosts/:id' element={<PostDetail/>}/>

@@ -13,7 +13,7 @@ const Banner = ({avatar, headerImg, userName}) => {
                     <div className="flex items-center mt-6">
                         <img
                             src={avatar}
-                            alt="avatar" className="rounded-full w-36 ml-12"/>
+                            alt="avatar" className="rounded-full w-36 h-36 ml-12"/>
                         <Typography variant="h1" className="ml-12">
                             {userName}
                         </Typography>

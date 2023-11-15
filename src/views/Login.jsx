@@ -1,20 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useNavigate} from "react-router-dom";
 import useSession from "../hooks/useSession";
-import logo from "../assets/logo_upscayl_16x_realesrgan-x4plus-anime.png"
-
-import {
-    Card,
-    Input,
-    Button,
-    Typography,
-    Menu,
-    MenuHandler,
-    MenuItem,
-    MenuList
-} from "@material-tailwind/react";
-import NavigationNoLog from "../components/nav/Navigation";
-import NavigationLogin from "../components/nav/NavigationLogin";
 import LoginForm from "../components/loginForm/LoginForm";
 const Login = () => {
     const [loginData, setLoginData] = useState({})
@@ -63,7 +49,7 @@ const Login = () => {
     }
 
     return (
-        <main className="w-screen bg-cover bg-center bg-[url('https://stsci-opo.org/STScI-01H44AY5ZTCV1NPB227B2P650J.png')]">
+        <main className="">
             <LoginForm
                 handleSubmit={handleSubmit}
                 handleInputChange={handleInputChange}

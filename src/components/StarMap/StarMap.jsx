@@ -81,8 +81,10 @@ const StarMap = ({type}) => {
             )}
 
             {!loading && !error && star.data && (
-            <Card className="w-full p-4 lg:w-[100rem] md:w-auto">
-                <img src={star.data.imageUrl} alt="star-chart" />
+            <Card className="w-fit p-4 lg:w-[100rem] md:w-fit">
+                {localStorage.setItem('starChart', star.data.imageUrl)}
+                <img src={localStorage.getItem('starChart') && localStorage.getItem('starChart')} alt="star-chart" className={"object-fit"} />
+                <img src={!localStorage.getItem('starChart') && star.data.imageUrl} alt="star-chart" className={"object-fit"} />
             </Card>
             )
             }

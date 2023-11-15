@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useRef, useEffect} from 'react';
 import {UserProvider} from "../../context/UserContext";
 import {Button, Input, Typography} from "@material-tailwind/react";
 import TimezoneSelect from 'react-timezone-select'
@@ -13,7 +13,7 @@ const UserInfo = () => {
         Intl.DateTimeFormat().resolvedOptions().timeZone
     )
 
-    const [date, setDate] = useState("Date")
+    const [date, setDate] = useState(new Date())
     const [formData, setFormData] = useState({})
     const [editData, setEditData] = useState(null)
     const navigate = useNavigate()
@@ -52,31 +52,25 @@ const UserInfo = () => {
         }
     }
 
-
-    const handleBirthChange = (e) => {
-        setDate(e.target.value)
-        console.log(date)
-    }
-
     return (
-        <>
+        <div>
             <NavAccount/>
             {!loading && !error && user.userEmail && (
-                <div className={`flex flex-col justify-center items-center w-full xl:flex-row
-                    bg-[url('https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover bg-no-repeat bg-gray-700 bg-blend-soft-light`}
-                >
+                <div className={`flex flex-col 2xl:h-screen justify-center items-center w-full xl:flex-row
+                    bg-[url('https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover bg-no-repeat bg-gray-800 bg-blend-soft-light`
+                }>
                     <div className="flex flex-col justify-center items-center">
                         <div>
                             <div className="py-6">
                                 <div className="flex flex-col px-4 sm:px-6 md:px-8">
                                     <div id="user"
-                                         className="w-96 flex justify-between items-center rounded-[20px] p-4 bg-blue_gray-50">
+                                         className="w-80 2xl:w-96 flex justify-between items-center rounded-[20px] p-4 bg-blue_gray-50">
                                         <img
                                             className="rounded-full w-20 h-20"
                                             src={user.userEmail.avatar}
                                         />
 
-                                        <div className="flex flex-col justify-center items-center">
+                                        <div className="w-80 2xl:w-96 flex flex-col justify-center items-center">
                                             <Typography variant="h6">
                                                 {user.userEmail.userName}
                                             </Typography>
@@ -88,7 +82,7 @@ const UserInfo = () => {
                                         </div>
                                     </div>
                                     <div id="lang"
-                                         className="mt-6 w-96 flex flex-col  rounded-[20px] p-5 bg-gray-100 divide-solid">
+                                         className="mt-6 w-80 2xl:w-96 flex flex-col  rounded-[20px] p-5 bg-gray-100 divide-solid">
 
                                         <Typography variant="h5">
                                             Language & Time
@@ -106,7 +100,7 @@ const UserInfo = () => {
                                         </div>
                                     </div>
                                     <div id="socials"
-                                         className="mt-6 w-96 flex flex-col  rounded-[20px] p-5 bg-gray-100 divide-solid">
+                                         className="mt-6 w-80 2xl:w-96 flex flex-col  rounded-[20px] p-5 bg-gray-100 divide-solid">
                                         <Typography variant="h5">
                                             Social
                                         </Typography>
@@ -201,9 +195,12 @@ const UserInfo = () => {
                                                 <div>
                                                     <label htmlFor="birth"
                                                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birthday</label>
-                                                    <Input name="birth" type="date" id="birth"
+                                                    <Input name="birth" type="text" id="birth"
                                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                           onChange={handleBirthChange}
+                                                           placeholder={user.userEmail.birth.split("T")[0]}
+                                                           onChange={handleInputChange}
+                                                           onFocus={(e) => (e.target.type = "date")}
+                                                           onBlur={(e) => (e.target.type = "text")}
                                                     />
                                                 </div>
 
@@ -230,7 +227,7 @@ const UserInfo = () => {
                 </div>
 
             )}
-        </>
+        </div>
     )
 }
 
