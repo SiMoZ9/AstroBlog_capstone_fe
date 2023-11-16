@@ -1,7 +1,7 @@
 import NavigationPostLogin from "../components/nav/NavigationPostLogin";
 import MyPosts from "../components/Me/MyPosts";
 
-export const Me_post = () => {
+const MePosts = () => {
     return (
         <>
             <NavigationPostLogin />
@@ -9,3 +9,5 @@ export const Me_post = () => {
         </>
     )
 }
+
+export default MePosts

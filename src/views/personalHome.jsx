@@ -1,34 +1,38 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import NavigationPostLogin from "../components/nav/NavigationPostLogin";
 import useSession from "../hooks/useSession";
 import {useNavigate} from "react-router-dom";
 import {Jumbotron} from "../components/jumbo/Jumbotron";
 import LatestPost from "../components/Latest/LatestPost/LatestPost";
 import LatestNews from "../components/Latest/LatestNews/LatestNews";
+import {PostsProvider} from "../context/PostsContext";
 
 const PersonalHome = () => {
 
     const session = useSession()
     const navigate = useNavigate()
 
+    const {posts} = useContext(PostsProvider)
+
     useEffect(() => {
         if (!session) navigate('/')
+        console.log(session)
     }, []);
 
     return (
         <>
             <NavigationPostLogin/>
             <Jumbotron
-                title={"Ultimi post"}
+                title={"Latest Post"}
                 needButton={true}
-                buttonText={"Vedi tutti i post"}
+                buttonText={"All posts"}
                 linkTo={'/skyPosts/all'}
             />
             <div className="p-8">
-                <LatestPost/>
+                <LatestPost whatMap={posts.posts}/>
             </div>
             <Jumbotron
-                title={"Ultime notizie dallo spazio"}
+                title={"Latest news"}
                 needButton={false}
             />
             <div className="p-8">

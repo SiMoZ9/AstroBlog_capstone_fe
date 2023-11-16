@@ -1,13 +1,12 @@
 import React from 'react';
-import PostSide from "../components/sidebar/Sidebar";
 import NavigationPostLogin from "../components/nav/NavigationPostLogin";
+import Posts from "../components/posts/Posts";
 
 const AllPosts = () => {
     return (
         <>
             <NavigationPostLogin/>
-
-            <PostSide/>
+            <Posts/>
         </>
     );
 };

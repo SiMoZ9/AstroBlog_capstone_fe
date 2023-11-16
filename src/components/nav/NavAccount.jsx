@@ -25,7 +25,7 @@ const NavAccount = () => {
                     < NavLink to="/account/posts"
                               className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200 text-gray-900 hover:text-white rounded-lg hover:bg-gray-900 group">
                         <FaImages className="text-xl mr-4"/>
-                        I miei post
+                        My posts
                     </NavLink>
                 </div>
             </div>

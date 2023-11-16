@@ -26,41 +26,6 @@ const NavigationPostLogin = ({userName, userPic}) => {
         );
     }, []);
 
-    const navList = (
-        <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link to="#" className="flex items-center">
-                    Esplora
-                </Link>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link to="#" className="flex items-center">
-                    Chi siamo
-                </Link>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <Link to="#" className="flex items-center">
-                    Contatti
-                </Link>
-            </Typography>
-        </ul>
-    );
-
     return (
         <div className="max-h-[768px] w-screen">
             <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
@@ -73,7 +38,6 @@ const NavigationPostLogin = ({userName, userPic}) => {
                     />
                     </Link>
                     <div className="flex items-center gap-4">
-                        <div className="mr-4 hidden lg:block">{navList}</div>
                         <div className="flex items-center gap-x-1">
                             <Link to="/publish">
                             <Button
@@ -81,7 +45,7 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                 size="sm"
                                 className="hidden lg:inline-block"
                             >
-                                <span className="flex items-center justify-center">Carica immagine <MdAddPhotoAlternate className="ml-1"/></span>
+                                <span className="flex items-center justify-center">New post<MdAddPhotoAlternate className="ml-1"/></span>
                             </Button>
                             </Link>
                             <Button
@@ -90,12 +54,12 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                 className="hidden lg:inline-block"
                                 onClick={() => setOpenAccountSettings(!openAccountSettings)}
                             >
-                                <span>Il tuo account</span>
+                                <span>Your account</span>
                                 <Collapse open={openAccountSettings}>
                                     <div className="flex items-center gap-x-1 mt-1">
                                         <Link to={`/account`}>
                                             <Button fullWidth variant="filled" color="white" size="sm">
-                                                <span className="flex items-center justify-center text-[10px]">Impostazioni</span>
+                                                <span className="flex items-center justify-center text-[10px]">Settings</span>
                                             </Button>
                                         </Link>
                                         <Button fullWidth variant="filled" color="white" size="sm">
@@ -104,7 +68,7 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                                     localStorage.clear()
                                                     navigate('/')
                                                 }
-                                            }>Esci</span>
+                                            }>Logout</span>
                                         </Button>
                                     </div>
                                 </Collapse>
@@ -149,8 +113,7 @@ const NavigationPostLogin = ({userName, userPic}) => {
                         </IconButton>
                     </div>
                 </div>
-                <MobileNav open={openNav}>
-                    {navList}
+                <Collapse open={openNav}>
                     <div className="flex items-center gap-x-1 h-auto">
                         <Link to="/publish">
                             <Button
@@ -158,7 +121,7 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                 size="sm"
                                 className="lg:inline-block"
                             >
-                                <span className="flex items-center justify-center">Carica immagine <MdAddPhotoAlternate className="ml-1"/></span>
+                                <span className="flex items-center justify-center">New post<MdAddPhotoAlternate className="ml-1"/></span>
                             </Button>
                         </Link>
                         <Button
@@ -167,12 +130,12 @@ const NavigationPostLogin = ({userName, userPic}) => {
                             className="lg:inline-block"
                             onClick={() => setOpenAccountSettings(!openAccountSettings)}
                         >
-                            <span>Il tuo account</span>
+                            <span>Your account</span>
                             <Collapse open={openAccountSettings}>
                                 <div className="flex items-center gap-x-1 mt-1">
                                     <Link to={`/account`}>
                                         <Button fullWidth variant="filled" color="white" size="sm">
-                                            <span className="flex items-center justify-center text-[10px]">Impostazioni</span>
+                                            <span className="flex items-center justify-center text-[10px]">Settings</span>
                                         </Button>
                                     </Link>
                                     <Button fullWidth variant="filled" color="white" size="sm">
@@ -181,13 +144,13 @@ const NavigationPostLogin = ({userName, userPic}) => {
                                                     localStorage.clear()
                                                     navigate('/')
                                                 }
-                                            }>Esci</span>
+                                            }>Logout</span>
                                     </Button>
                                 </div>
                             </Collapse>
                         </Button>
                     </div>
-                </MobileNav>
+                </Collapse>
             </Navbar>
         </div>
     );

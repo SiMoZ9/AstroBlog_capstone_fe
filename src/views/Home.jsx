@@ -19,9 +19,10 @@ const Home = () => {
         <>
             <NavigationBar/>
             <Jumbotron
-                title={"Benvenuto in AstroBlog!"}
-                subtitle={"Esplora l'universo"}
-                buttonText={"Esplora"}
+                title={"Welcome to AstroBlog"}
+                subtitle={"Explore the universe"}
+                buttonText={"Create an account"}
+                linkTo={"/signup"}
                 needButton={true}
             />
         </>
