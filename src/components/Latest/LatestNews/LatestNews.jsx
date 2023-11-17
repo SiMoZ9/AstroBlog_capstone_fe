@@ -77,7 +77,7 @@ const LatestNews = () => {
         <>
             <div className="flex flex-col justify-center items-center m-5 p-4 rounded-[20px] bg-gray-200">
                 <Typography variant="h3" className="p-4">
-                    Ultimi dati dal JWST
+                    Latest JWST data
                 </Typography>
                 <div className="w-full h-96">
                     {error && <h1>Errore durante il caricamento dei post</h1>}

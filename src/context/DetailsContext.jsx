@@ -44,6 +44,8 @@ const DetailsContext = ({children}) => {
             })
     }, [])
 
+    console.log(details)
+
 
     return (
         <DetailProvider.Provider value={{details, star, setStar, typeOfView, setTypeOfView, loading, setLoading, error, setError}}>

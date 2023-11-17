@@ -78,8 +78,11 @@ const NewPost = () => {
                                     g: postForm.g,
                                     b: postForm.b
                                 }
-                            }
+                            },
+                            mounts: postForm.mounts,
+                            guides: postForm.guides,
                         },
+
 
                         place: {
                             coordinates: {

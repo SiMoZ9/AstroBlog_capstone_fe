@@ -1,8 +1,11 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {UserProvider} from "../../context/UserContext";
 import {Button, Input, Typography} from "@material-tailwind/react";
 import NavAccount from "../nav/NavAccount";
 import DetailTable from "../Table/DetailTable";
+import {RingLoader} from "react-spinners";
+import useSession from "../../hooks/useSession";
+import {useNavigate} from "react-router-dom";
 
 const InstrumentInfo = () => {
 
@@ -93,9 +96,27 @@ const InstrumentInfo = () => {
         }
     }
 
+    const session = useSession()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!session) navigate('/')
+    }, [])
+
     return (
         <>
             <NavAccount/>
+
+            {error && <h1>Error</h1>}
+            {loading && !error && (
+                <div className="flex justify-center items-center h-full">
+                    <RingLoader
+                        size={300}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                </div>
+            )}
 
             {!loading && !error && user.userEmail && (
 

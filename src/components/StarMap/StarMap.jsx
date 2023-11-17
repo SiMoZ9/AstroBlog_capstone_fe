@@ -17,17 +17,17 @@ const StarMap = ({type}) => {
         "style": "navy",
 
         "observer": {
-            "latitude": details.description.place.coordinates.latitude,
-            "longitude": details.description.place.coordinates.longitude,
-            "date": details.description.place.coordinates.date,
+            "latitude": details.description.place.coordinates && details.description.place && details.description.place.coordinates.latitude,
+            "longitude": details.description.place.coordinates && details.description.place && details.description.place.coordinates.longitude,
+            "date": details.description.place.coordinates && details.description.place && details.description.place.coordinates.date,
         },
         "view": {
             "type": "area",
             "parameters": {
                 "position": {
                     "equatorial": {
-                        "rightAscension": details.description.place.coordinates.ra,
-                        "declination": details.description.place.coordinates.dec
+                        "rightAscension": details.description.place.coordinates && details.description.place && details.description.place.coordinates.ra,
+                        "declination": details.description.place.coordinates && details.description.place && details.description.place.coordinates.dec
                     }
                 },
                 "zoom": 3 //optional

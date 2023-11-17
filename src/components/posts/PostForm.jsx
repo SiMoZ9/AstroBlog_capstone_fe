@@ -24,12 +24,11 @@ const PostForm = ({
                   }) => {
 
     const [catalog, setCatalog] = useState('Seleziona catalogo')
-    const [band, setBand] = useState('Banda')
+    const [band, setBand] = useState('Band')
 
     const bands = [
-        'Broadband',
+        'Broadband (use this if you use color camera)',
         'Narrowband',
-        'Color Camera'
     ]
 
     const catalogs = [
@@ -140,6 +139,37 @@ const PostForm = ({
                         }}
                         onChange={change}
                     />
+
+
+                    <Typography variant="h6" className="-mb-3 text-blue_gray-100">
+                        Mount
+                    </Typography>
+                    <Input
+                        size="lg"
+                        placeholder={telescopePlaceholder}
+                        name="mounts"
+                        className="!border-t-blue-gray-200 focus:!border-t-gray-900 text-blue_gray-100"
+                        labelProps={{
+                            className: "before:content-none after:content-none",
+                        }}
+                        onChange={change}
+                    />
+
+
+                    <Typography variant="h6" className="-mb-3 text-blue_gray-100">
+                        Guide
+                    </Typography>
+                    <Input
+                        size="lg"
+                        placeholder={telescopePlaceholder}
+                        name="guides"
+                        className="!border-t-blue-gray-200 focus:!border-t-gray-900 text-blue_gray-100"
+                        labelProps={{
+                            className: "before:content-none after:content-none",
+                        }}
+                        onChange={change}
+                    />
+
                     <Menu placement="bottom-start">
                         <Typography variant="h6" className="-mb-3 text-blue_gray-100">
                             Filters
@@ -149,9 +179,9 @@ const PostForm = ({
                                 ripple={false}
                                 variant="text"
 
-                                className="flex h-10 items-center border-blue-gray-200 bg-blue-gray-500/10 pl-3"
+                                className="flex h-10 items-center border-blue-gray-200 bg-blue_gray-900 hover:bg-blue_gray-800 pl-3"
                             >
-                                {band}
+                                <Typography variant={"h6"} className="text-blue_gray-200">{band}</Typography>
                             </Button>
                         </MenuHandler>
                         <MenuList className="max-h-[20rem] max-w-[18rem]">
@@ -163,7 +193,7 @@ const PostForm = ({
                                         onClick={() => setBand(bands)}
                                     >
                                         {console.log(band)}
-                                        <span className="text-center text-blue_gray-100">{bands}</span>
+                                        <span className="text-center text-blue_gray-900">{bands}</span>
                                     </MenuItem>
                                 );
                             })}
@@ -211,7 +241,7 @@ const PostForm = ({
                                     onChange={change}
                                 />
                             </div>)}
-                        {band === "Broadband" && (
+                        {band === bands[0] && (
                             <div className="flex justify-center items-center">
                                 <Typography variant="h6" className="p-4 text-blue_gray-100">
                                     L
@@ -268,10 +298,6 @@ const PostForm = ({
                                     onChange={change}
                                 />
                             </div>)}
-
-                        {band === "Color Camera" && (
-                            <></>
-                        )}
                     </Menu>
 
                     <Typography variant="h6" className="-mb-3 text-blue_gray-100">

@@ -25,6 +25,7 @@ const PostsContext = ({children}) => {
         fetchData.then((res) => {
             setPosts(res)
             setLoading(false)
+            localStorage.setItem('posts', JSON.stringify(res.posts))
         })
             .catch((err) => {
                 console.log(err)

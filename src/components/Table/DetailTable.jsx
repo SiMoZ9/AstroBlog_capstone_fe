@@ -23,7 +23,7 @@ const DetailTable = (
     const TABLE_ROWS = [
         {
             telescope: telescope,
-            camera: telescope,
+            camera: camera,
             narrowband: narrow,
             broadband: broad,
             mounts: mounts,

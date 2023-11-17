@@ -1,18 +1,39 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import NavigationPostLogin from "../nav/NavigationPostLogin";
 import {Typography} from "@material-tailwind/react";
 import DetailTable from "../Table/DetailTable";
 import StarMap from "../StarMap/StarMap";
 import {DetailProvider} from "../../context/DetailsContext";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {RingLoader} from "react-spinners";
+import useSession from "../../hooks/useSession";
 
 const DetailComponent = () => {
 
     const {details, star, setStar, typeOfView, setTypeOfView, loading, setLoading, error} = useContext(DetailProvider)
 
+    const session = useSession()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!session) navigate('/')
+    }, [])
+
     return (
         <>
             <NavigationPostLogin/>
+
+            {error && <h1>Error</h1>}
+            {loading && !error && (
+                <div className="flex justify-center items-center h-full">
+                    <RingLoader
+                        size={300}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                </div>
+            )}
+
             {!loading && !error && details && (
                 <main className="w-screen h-full pt-12 bg-gray-900">
                     <div className="flex flex-col w-96">
@@ -44,22 +65,23 @@ const DetailComponent = () => {
 
                             <div>
                                 <DetailTable
-                                    telescope={details.description.instrumentation.telescope}
-                                    camera={details.description.instrumentation.camera}
-                                    narrow={`${details.description.instrumentation.filters.narrowband.ha};${details.description.instrumentation.filters.narrowband.oiii};${details.description.instrumentation.filters.narrowband.sii}`}
-                                    broadband={`${`
+                                    telescope={details.description.instrumentation && details.description.instrumentation.telescope}
+                                    camera={details.description.instrumentation && details.description.instrumentation.camera}
+                                    narrow={details.description.instrumentation.filters && `${details.description.instrumentation.filters.narrowband.ha};${details.description.instrumentation.filters.narrowband.oiii};${details.description.instrumentation.filters.narrowband.sii}`}
+                                    broadband={details.description.instrumentation.filters && `
                                         ${details.description.instrumentation.filters.broadband.l};
                                         ${details.description.instrumentation.filters.broadband.r};
                                         ${details.description.instrumentation.filters.broadband.g};
-                                        ${details.description.instrumentation.filters.broadband.b}`}`}
+                                        ${details.description.instrumentation.filters.broadband.b}`}
                                     mounts={details.description.instrumentation.mounts}
                                     guide={details.description.instrumentation.guides}
-                                    constellation={details.description.place.constellation}
-                                    lat={details.description.place.coordinates.latitude}
-                                    long={details.description.place.coordinates.longitude}
-                                    ra={details.description.place.coordinates.ra}
-                                    dec={details.description.place.coordinates.dec}
-                                    date={details.description.place.coordinates.date}
+
+                                    constellation={details.description.place.coordinates && details.description.place && details.description.place.constellation}
+                                    lat={details.description.place.coordinates && details.description.place && details.description.place.coordinates.latitude}
+                                    long={details.description.place.coordinates && details.description.place && details.description.place.coordinates.longitude}
+                                    ra={details.description.place.coordinates && details.description.place && details.description.place.coordinates.ra}
+                                    dec={details.description.place.coordinates && details.description.place && details.description.place.coordinates.dec}
+                                    date={details.description.place.coordinates && details.description.place && details.description.place.coordinates.date}
                                     enableDesc={true}
                                 />
                             </div>

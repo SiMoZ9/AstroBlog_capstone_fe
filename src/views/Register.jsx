@@ -59,7 +59,7 @@ const Register = () => {
         if (session) {
             navigate('/personalHome')
         } else navigate('/signup')
-    }, []);
+    }, [loginData]);
 
     const handleInputChange = (e) => {
         const {name, value} = e.target
@@ -95,13 +95,34 @@ const Register = () => {
                     method: 'POST',
                     body: JSON.stringify(finalBody)
                 })
+
                 const data = await postData.json()
-                console.log(finalBody)
+
+                console.log(data)
+
 
                 if (data.token) {
                     localStorage.setItem('loggedInUser', JSON.stringify(data.token))
                     navigate("/personalHome")
+                    if (localStorage.getItem('registerStatusCode')) localStorage.removeItem('registerStatusCode')
+                    if (localStorage.getItem('msg') && localStorage.getItem('path')) {
+                        localStorage.removeItem('msg')
+                        localStorage.removeItem('path')
+                    }
+
                 }
+                if (data.statusCode === 400) {
+                    window.location.reload(true)
+                    localStorage.setItem(`registerStatusCode`, JSON.stringify(data.statusCode))
+                }
+
+                if(data.errors) {
+                    window.location.reload(true)
+                    localStorage.setItem(`msg`, JSON.stringify(data.errors[0].msg))
+                    localStorage.setItem(`path`, JSON.stringify(data.errors[0].path))
+                    localStorage.removeItem(`registerStatusCode`)
+                }
+
                 setLogin(data)
             } catch (err) {
                 console.log(err)
@@ -125,10 +146,31 @@ const Register = () => {
                     </Typography>
                 </div>
 
+                {localStorage.getItem(`registerStatusCode`) &&
+                    <div className="flex justify-center">
+                        <Typography variant="h1"
+                                    className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-mat_gray-300">
+                            Email or user already registered
+                        </Typography>
+                    </div>
+                }
+
+
+                {localStorage.getItem(`msg`) &&
+                    <div className="flex justify-center">
+                        <Typography variant="h1"
+                                    className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-mat_gray-300">
+                            Password not valid
+                        </Typography>
+                    </div>
+                }
+
+
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm rounded-[10px]">
                     <form className="space-y-6" onSubmit={handleSubmit} encType={"multipart/form-data"}>
                         <div>
-                            <Typography htmlFor="email" className="block text-sm font-medium leading-6 text-mat_gray-300">
+                            <Typography htmlFor="email"
+                                        className="block text-sm font-medium leading-6 text-mat_gray-300">
                                 Email address
                             </Typography>
                             <div className="mt-2">
@@ -145,7 +187,8 @@ const Register = () => {
                         </div>
 
                         <div>
-                            <Typography htmlFor="email" className="block text-sm font-medium leading-6 text-mat_gray-300">
+                            <Typography htmlFor="email"
+                                        className="block text-sm font-medium leading-6 text-mat_gray-300">
                                 Username
                             </Typography>
                             <div className="mt-2">
@@ -162,7 +205,8 @@ const Register = () => {
 
 
                         <div>
-                            <Typography htmlFor="email" className="block text-sm font-medium leading-6 text-mat_gray-300">
+                            <Typography htmlFor="email"
+                                        className="block text-sm font-medium leading-6 text-mat_gray-300">
                                 Password
                             </Typography>
                             <div className="mt-2">
@@ -178,7 +222,8 @@ const Register = () => {
                         </div>
 
                         <div>
-                            <Typography htmlFor="email" className="block text-sm font-medium leading-6 text-mat_gray-300">
+                            <Typography htmlFor="email"
+                                        className="block text-sm font-medium leading-6 text-mat_gray-300">
                                 Verify password
                             </Typography>
                             <div className="mt-2">
@@ -193,7 +238,8 @@ const Register = () => {
                         </div>
 
                         <div>
-                            <Typography htmlFor="email" className="block text-sm font-medium leading-6 text-mat_gray-300">
+                            <Typography htmlFor="email"
+                                        className="block text-sm font-medium leading-6 text-mat_gray-300">
                                 Birth
                             </Typography>
                             <div className="mt-2">
@@ -244,7 +290,8 @@ const Register = () => {
 
                         <p className="mt-10 text-center text-sm text-white">
                             Registered?{' '}
-                            <Link to="/login" className="font-semibold leading-6 text-blue_gray-200 hover:text-blue_gray-100">
+                            <Link to="/login"
+                                  className="font-semibold leading-6 text-blue_gray-200 hover:text-blue_gray-100">
                                 Login now!
                             </Link>
                         </p>

@@ -4,8 +4,8 @@ import MyPosts from "../components/Me/MyPosts";
 const MePosts = () => {
     return (
         <>
-            <NavigationPostLogin />
-            <MyPosts />
+            <NavigationPostLogin/>
+            <MyPosts/>
         </>
     )
 }

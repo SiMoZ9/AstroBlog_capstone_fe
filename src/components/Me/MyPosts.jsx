@@ -1,14 +1,14 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useFetch} from "../../hooks/useFetch";
 import PostCard from "../Latest/PostCard/PostCard";
 import {UserProvider} from "../../context/UserContext";
-import VerticalNav from "../nav/VerticalUserNav";
 import {RingLoader} from "react-spinners";
 import {Button, Typography} from "@material-tailwind/react";
 import {FaRegSadTear} from "react-icons/fa";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {MdAddPhotoAlternate} from "react-icons/md";
 import NavAccount from "../nav/NavAccount";
+import useSession from "../../hooks/useSession";
 
 const MyPosts = () => {
 
@@ -34,11 +34,22 @@ const MyPosts = () => {
 
     console.log(myPosts.userInfo)
 
+    const session = useSession()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!session) navigate('/')
+    }, [])
+
     return (
         <>
-            <NavAccount />
+            <NavAccount/>
+            <div className="bg-[url('https://images.pexels.com/photos/39561/solar-flare-sun-eruption-energy-39561.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center bg-cover bg-no-repeat bg-gray-800 bg-blend-soft-light
+            h-screen p-12">
 
-            {loading && !error && <>
+                {error && <h1>Error</h1>}
+
+                {loading && !error && <>
                     <RingLoader
                         size={150}
                         aria-label="Loading Spinner"
@@ -73,16 +84,18 @@ const MyPosts = () => {
                     </>
                 }
 
-                {!loading && !error && myPosts.userInfo && myPosts.userInfo.map((post, i) => (
-                    <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-center gap-y-20 gap-x-14 mt-10 mb-5 w-fit mx-auto bg-gray-100 p-4 rounded-[20px]">
+                <div
+                    className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 justify-center gap-y-20 gap-x-14 mt-10 mb-5 w-fit mx-auto bg-gray-100 p-8 rounded-[20px] ">
+                    {!loading && !error && myPosts.userInfo && myPosts.userInfo.map((post, i) => (
                         <PostCard
                             title={post.title}
                             cover={post.mainPic}
-                            buttonText={"Modifica post"}
+                            buttonText={"Edit post"}
                             linkTo={`/skyPost/edit/${post._id}`}
                         />
-                    </div>
-                ))}
+                    ))}
+                </div>
+            </div>
         </>
     )
 }

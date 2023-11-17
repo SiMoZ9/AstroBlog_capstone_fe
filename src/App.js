@@ -16,6 +16,7 @@ import UserPage from "./views/UserPage";
 import ProfileContext from "./context/ProfileContext";
 import AllPosts from "./views/AllPosts";
 import PostsContext from "./context/PostsContext";
+import Error from "./views/Error";
 
 function App() {
     return (
@@ -50,6 +51,7 @@ function App() {
                         <Route path='/profile/:id' element={<UserPage/>}/>
                     </Route>
                     <Route/>
+                    <Route path="*" element={<Error />} />
                 </Route>
 
             </Routes>

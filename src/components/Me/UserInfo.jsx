@@ -6,6 +6,7 @@ import {PiInstagramLogo, PiMetaLogo} from "react-icons/pi"
 import {RiTwitterXLine} from "react-icons/ri"
 import {Link, useNavigate} from "react-router-dom"
 import NavAccount from "../nav/NavAccount";
+import useSession from "../../hooks/useSession";
 
 const UserInfo = () => {
     const {user, setUser, loading, setLoading, error, setError} = useContext(UserProvider);
@@ -51,6 +52,12 @@ const UserInfo = () => {
             console.log(err)
         }
     }
+
+    const session = useSession()
+
+    useEffect(() => {
+        if (!session) navigate('/')
+    }, [])
 
     return (
         <div>
